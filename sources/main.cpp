@@ -1,10 +1,9 @@
-#include "includes/lexer.h"
-#include "includes/parser.h"
+#include "includes/lexer.hpp"
+#include "includes/parser.hpp"
 
 int int main(int argc, char const *argv[])
 {
-	
-	Lexer lexer();
+	Lexer lexer;
 	Parser parser(lexer);
 	parser.parseProgram();
 
