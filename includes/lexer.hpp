@@ -9,11 +9,11 @@ class Lexer
 {
 public:
 	Lexer() {
-		reserve(Word("if"), IF);
-		reserve(Word("else"), IF);
-		reserve(Word("while"), IF);
-		reserve(Word("do"), IF);
-		reserve(Word("break"), IF);
+		reserve(Word("if", IF));
+		reserve(Word("else", ELSE));
+		reserve(Word("while", WHILE));
+		reserve(Word("do", DO));
+		reserve(Word("break", BREAK));
 		reserve(WordTRUE);
 		reserve(WordFALSE);
 		reserve(TypeINT);
@@ -26,7 +26,7 @@ public:
 	Token scan() {
 		for ( ; ; readChar())
 		{	
-			if (peekChar == '' || peekChar == '\t')
+			if (peekChar == ' ' || peekChar == '\t')
 			{	
 				continue;
 			} else if (peekChar == '\n')
@@ -43,7 +43,8 @@ public:
 				{
 					return WordAND;
 				} else {
-					return Token('&');
+					//return Token('&');
+					return Token(BIT_AND);
 				}
 				break;
 			case '|':
@@ -51,7 +52,8 @@ public:
 				{
 					return WordOR;
 				} else {
-					return Token('|');
+					//return Token('|');
+					return Token(BIT_OR);
 				}
 				break;
 			case '=':
@@ -59,7 +61,8 @@ public:
 				{
 					return WordEQ;
 				} else {
-					return Token('=');
+					//return Token('=');
+					return Token(ASSIGN);
 				}
 				break;
 			case '<':
@@ -67,7 +70,8 @@ public:
 				{
 					return WordLE;
 				} else {
-					return Token('<');
+					//return Token('<');
+					return Token(LT);
 				}
 				break;
 			case '>':
@@ -75,15 +79,17 @@ public:
 				{
 					return WordGE;
 				} else {
-					return Token('>');
+					//return Token('>');
+					return Token(GT);
 				}
 				break;
 			case '!':
 				if (readChar('='))
 				{
-					return WordOR;
+					return WordNE;
 				} else {
-					return Token('!');
+					//return Token('!');
+					return Token(NOT);
 				}
 				break;
 			default:
@@ -133,7 +139,7 @@ public:
 	
 
 private:
-	void reserve(Word& w) {
+	void reserve(Word w) {
 		words.push_back(w);
 	}
 	Word findByString(std::string& str) {
@@ -161,7 +167,7 @@ private:
 
 	static int line;
 	char peekChar;
-	std::std::vector<Word> words;
+	std::vector<Word> words;
 
 };
 
