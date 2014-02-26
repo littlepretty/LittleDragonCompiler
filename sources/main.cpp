@@ -1,7 +1,7 @@
 #include "../includes/lexer.hpp"
 #include "../includes/symbols.hpp"
 #include "../includes/inter.hpp"
-
+#include "../includes/parser.hpp"
 
 int main(int argc, char const *argv[])
 {

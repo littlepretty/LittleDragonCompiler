@@ -322,3 +322,263 @@ public:
 	}
 	
 };
+
+class Stmt: public Node
+{
+public:
+	Stmt();
+	virtual ~Stmt();
+	virtual void gen(int b, int a) {};
+
+	static Stmt StmtNULL;
+	static Stmt Enclosing;
+private:
+	int after;
+};
+
+Stmt Stmt::StmtNULL;
+Stmt Stmt::Enclosing = Stmt::StmtNULL;
+
+
+class If: public Stmt
+{
+public:
+	If(Expr e, Stmt s):test(e), stmt(s) {
+		if (test.type != TypeBOOL)
+		{
+			test.error("Require BOOL in If Stmt");
+		}
+
+	};
+	~If();
+
+	virtual void gen(int b, int a) {
+		int label = newLabel();
+		test.jumping(0,a);
+		emitLabel(label);
+		stmt.gen(label,a);
+	}
+private:
+	Expr test;
+	Stmt stmt;
+};
+
+class Else: Stmt
+{
+public:
+	Else(Expr e, Stmt s1, Stmt s2):test(e), stmt1(s1), stmt2(s2) {
+		if (test.type != TypeBOOL)
+		{
+			test.error("Require BOOL in If Stmt");
+		}
+	};
+	~Else();
+	virtual void gen(int b, int a){
+		int label1 = newLabel();
+		int label2 = newLabel();
+		test.jumping(0,label2);
+		
+		emitLabel(label1);
+		stmt1.gen(label1, a);
+		std::stringstream gt;
+		gt<<"goto L"<<a;
+		emit(gt.str());
+
+		emitLabel(label2);
+		stmt2.gen(label2,a);
+	}
+private:
+	Expr test;
+	Stmt stmt1;
+	Stmt stmt2;
+};
+
+class While: public Stmt
+{
+public:
+	While():test(NULL),stmt(NULL) {};
+	void init(Expr e, Stmt s) {
+		test = e;
+		stmt = s;
+		if (test.type != TypeBOOL)
+		{
+			test.error("Require BOOL in If Stmt");
+		}
+	}
+	~While();
+	virtual void gen(int b, int a) {
+		after = a;
+		test.jumping(0,a);
+		int label = newLabel();
+		emitLabel(label);
+		stmt.gen(label,b);
+
+		std::stringstream gt;
+		gt<<"goto L"<<b;
+		emit(gt.str());
+	}
+
+private:
+	Expr test;
+	Stmt stmt;
+};
+
+class Do: public Stmt
+{
+public:
+	Do():test(NULL),stmt(NULL) {};
+	void init(Expr e, Stmt s) {
+		test = e;
+		stmt = s;
+		if (test.type != TypeBOOL)
+		{
+			test.error("Require BOOL in If Stmt");
+		}
+	}
+	~Do();
+	virtual void gen(int b, int a) {
+		after = a;
+		int label = newLabel();
+		stmt.gen(b,label);
+		emitLabel(label);
+		test.jumping(b,0);
+	}
+
+private:
+	Expr test;
+	Stmt stmt;
+	
+};
+
+class Set: public Stmt
+{
+public:
+	Set(Id i, Expr e):id(i), exp(e) {
+		if (check(id.type, exp.type) == NULL)
+		{
+			error("Type Error");
+		}
+	};
+	Type check(Type p1, Type p2) {
+		if (numeric(p1) && numeric(p2))
+		{
+			return p2;
+		} else if (p1 == TypeBOOL && p2 == TypeBOOL)
+		{
+			return p2;
+		} else {
+			return NULL;
+		}
+	}
+	~Set();
+	virtual void gen(int b, int a) {
+		emit(id.toString() + " = " + exp.gen.toString());
+	}
+
+private:
+	Id id;
+	Expr exp;
+	
+};
+
+class SetElem: public Stmt
+{
+public:
+	SetElem(Access x, Expr e)exp(e) {
+		array = x.array;
+		index = x.index;
+		if (check(x.type, exp.type) == NULL)
+		{
+			error("Type Error");
+		}
+	};
+	Type check(Type p1, Type p2) {
+		if (numeric(p1) && numeric(p2))
+		{
+			return p2;
+		} else if (p1 == TypeBOOL && p2 == TypeBOOL)
+		{
+			return p2;
+		} else {
+			return NULL;
+		}
+	}
+	~SetElem();
+
+	virtual void gen(int b, int a) {
+		std::string s1 = index.reduce().toString();
+		std::string s2 = exp.reduce().toString();
+		emit(array.toString() + " [ " + s1 + "] = " + s2);
+	}
+
+private:
+	Id array;
+	Expr index;
+	Expr exp;
+};
+
+class Break: public Stmt
+{
+public:
+	Break() {
+		if (StmtNULL::StmtNULL == Stmt::Enclosing)
+		{
+			error("Unenclosed Break");
+		}
+		stmt = Enclosing;
+	};
+	~Break();
+	virtual void gen(int b, int a) {
+		std::stringstream gt;
+		gt<<"goto L"<<after;
+		emit(gt.str());
+	}
+private:
+	Stmt stmt;
+	
+};
+
+class Seq: public Stmt
+{
+public:
+	Seq(Stmt s1, Stmt s2):stmt1(s1), stmt2(s2) {};
+	~Seq();
+	virtual void gen(int b, int a) {
+		if (stmt1 == StmtNULL)
+		{
+			stmt2.gen(b, a);
+		} else if (stmt2 == StmtNULL)
+		{
+			stmt1.gen(b, a);
+		} else {
+			int label = newLabel();
+			stmt1.gen(b, label);
+			emitLabel(label);
+			stmt2.gen(label,a);
+		}
+	}
+private:
+	Stmt stmt1;
+	Stmt stmt2;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

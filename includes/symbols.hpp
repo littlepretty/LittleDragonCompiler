@@ -96,9 +96,9 @@ private:
 class Env
 {
 public:
-	Env(Env* n):prev(n);
+	Env(Env* n):prev(n) {};
 	~Env();
-	void put(Token w, Id, i) {
+	void put(Token w, Id i) {
 		table[w] = i;
 	}
 	Id get(Token w) {
