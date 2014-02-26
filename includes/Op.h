@@ -45,7 +45,7 @@ public:
 	virtual Expr gen();
 	virtual void jumping(int t, int f);
 	virtual std::string toString();
-private:
+
 	Id array;
 	Expr index;
 };

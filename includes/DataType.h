@@ -32,5 +32,5 @@ private:
 
 bool numeric(DataType p);
 DataType max(DataType p1, DataType p2);
-
+DataType check(DataType p1, DataType p2);
 

@@ -1,22 +1,5 @@
 #include "Logical.h"
 
-DataType check(DataType p1, DataType p2) {
-	if (p1 == DataType::TypeBOOL && p2 == DataType::TypeBOOL)
-	{
-		return DataType::TypeBOOL;
-	} else if (p1 == DataType::TypeINT && p2 == DataType::TypeINT)
-	{
-		return DataType::TypeBOOL;
-	} else if (p1 == DataType::TypeFLOAT && p2 == DataType::TypeFLOAT)
-	{
-		return DataType::TypeBOOL;
-	} else if (p1 == DataType::TypeCHAR && p2 == DataType::TypeCHAR)
-	{
-		return DataType::TypeBOOL;
-	} else {
-		return DataType::TypeNULL;
-	}
-}
 
 Logical::Logical(Token tok, Expr e1, Expr e2): Expr(tok, check(exp1.type, exp2.type)), exp1(e1), exp2(e2) {
 	if (type == DataType::TypeNULL)

@@ -106,7 +106,7 @@ Token Lexer::scan() {
 		{	
 			return Token(NUM);	
 		}
-		float f = v;
+		float f = (float)v;
 		float d = 10;
 		while(isdigit(peekChar)) {
 			f = f + (float)(peekChar-'0')/d;

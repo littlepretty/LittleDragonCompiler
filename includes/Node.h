@@ -11,7 +11,7 @@ public:
 	int newLabel();
 	void emitLabel(int i);
 	void emit(std::string str);
-private:
+
 	int lexerLine;
 	static int label;
 };

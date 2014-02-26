@@ -2,7 +2,7 @@
 #include "Expr.h"
 #include "DataType.h"
 
-DataType check(DataType p1, DataType p2);
+
 
 class Logical :	public Expr
 {
