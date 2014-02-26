@@ -1,13 +1,16 @@
-#include "../includes/lexer.hpp"
-#include "../includes/symbols.hpp"
-#include "../includes/inter.hpp"
-#include "../includes/parser.hpp"
 
-int main(int argc, char const *argv[])
+#include "Token.h"
+#include "Word.h"
+#include "DataType.h"
+#include "Node.h"
+#include "Expr.h"
+#include "Op.h"
+#include "Logical.h"
+
+#include "Lexer.h"
+
+int main() 
 {
-	Lexer lexer;
-	Parser parser(lexer);
-	parser.parseProgram();
 
 	return 0;
 }
