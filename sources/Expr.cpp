@@ -1,5 +1,6 @@
 #include "Expr.h"
 
+const Expr ExprNULL; 
 
 Expr::Expr(Token tok, DataType p):op(tok), type(p) 
 {
@@ -55,7 +56,7 @@ std::string Expr::toString() {
 	return op.toString();
 }
 
-Id::Id(Word id, DataType p, int b):Expr(id, p), offset(b) 
+Id::Id(Token id, DataType p, int b):Expr(id, p), offset(b) 
 {
 }
 

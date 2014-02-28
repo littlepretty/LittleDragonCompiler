@@ -20,8 +20,10 @@ public:
 	bool operator==(const Token& rhs) {
 		return this->t_tag == rhs.t_tag;
 	}
-	
-private:
+	Token& operator=(const Token rhs) {
+		return Token(rhs.t_tag);
+	}
+
 	const Tag t_tag;
 };
 
@@ -31,7 +33,7 @@ public:
 	Num(int val);
 	~Num();
 	virtual std::string toString(); 
-private:
+
 	const int n_value;
 };
 

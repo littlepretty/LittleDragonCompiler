@@ -22,12 +22,13 @@ public:
 
 	Token op;
 	DataType type;
+	const static Expr ExprNULL; 
 };
 
 class Id: public Expr
 {
 public:
-	Id(Word id, DataType p, int b);
+	Id(Token id, DataType p, int b);
 	~Id();
 private:
 	int offset;

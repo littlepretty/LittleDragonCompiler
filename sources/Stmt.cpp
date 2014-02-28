@@ -66,8 +66,16 @@ void Else::gen(int b, int a){
 	stmt2.gen(label2,a);
 }
 
-While::While(Expr e, Stmt s):test(e),stmt(s) 
+While::While() 
 {
+	test = Expr::ExprNULL;
+	stmt = Stmt::StmtNULL;
+}
+
+void While::init(Expr e, Stmt s)
+{
+	test = e;
+	stmt = s;
 	if (test.type == DataType::TypeBOOL)
 	{
 
@@ -94,8 +102,14 @@ void While::gen(int b, int a)
 	emit(gt.str());
 }
 
-Do::Do(Expr e, Stmt s):test(e), stmt(s)
+Do::Do()
 {
+}
+
+void Do::init(Expr e, Stmt s)
+{
+	test = e;
+	stmt = s;
 	if (test.type == DataType::TypeBOOL)
 	{
 

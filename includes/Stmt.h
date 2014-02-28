@@ -29,7 +29,7 @@ private:
 	Stmt stmt;
 };
 
-class Else: Stmt
+class Else: public Stmt
 {
 public:
 	Else(Expr e, Stmt s1, Stmt s2);
@@ -44,7 +44,8 @@ private:
 class While: public Stmt
 {
 public:
-	While(Expr e, Stmt s);
+	While();
+	void init(Expr e, Stmt s);
 	~While();
 	virtual void gen(int b, int a);
 
@@ -57,7 +58,8 @@ private:
 class Do: public Stmt
 {
 public:
-	Do(Expr e, Stmt s);
+	Do();
+	void init(Expr e, Stmt s);
 	~Do();
 	virtual void gen(int b, int a);
 
