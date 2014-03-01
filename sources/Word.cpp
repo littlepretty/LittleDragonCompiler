@@ -1,16 +1,16 @@
 #include "Word.h"
 
-const Word Word::WordAND("&&", AND);
-const Word Word::WordOR("||", OR);
-const Word Word::WordEQ("==", EQ);
-const Word Word::WordNE("!=", NE);
-const Word Word::WordLE("<=", LE);
-const Word Word::WordGE(">=", GE);
-const Word Word::WordMINUS("minus", MINUS);
-const Word Word::WordTRUE("true", TRUE);
-const Word Word::WordFALSE("false", FALSE);
-const Word Word::WordTEMP("temp", TEMP);
-const Word Word::WordNULL("null", TAG_NULL);
+Word* Word::WordAND = new Word("&&", AND);
+Word* Word::WordOR = new Word("||", OR);
+Word* Word::WordEQ = new Word("==", EQ);
+Word* Word::WordNE = new Word("!=", NE);
+Word* Word::WordLE = new Word("<=", LE);
+Word* Word::WordGE = new Word(">=", GE);
+Word* Word::WordMINUS = new Word("minus", MINUS);
+Word* Word::WordTRUE = new Word("true", TRUE);
+Word* Word::WordFALSE = new Word("false", FALSE);
+Word* Word::WordTEMP = new Word("temp", TEMP);
+Word* Word::WordNULL = new Word("null", TAG_NULL);
 
 Word::Word(std::string str, Tag t):Token(t),w_lexme(str)
 {
@@ -21,10 +21,17 @@ Word::~Word(void)
 {
 }
 
-std::string Word::toString(){
+std::string Word::toString()
+{
 	return Token::toString() + w_lexme;
 }
 
-bool Word::operator==(const Word& rhs) {
+bool Word::operator==(const Word& rhs) 
+{
 	return this->w_lexme.compare(rhs.w_lexme) == 0;
+}
+
+bool operator<(const Word& lhs, const Word& rhs)
+{
+	return lhs.w_lexme.compare(rhs.w_lexme) < 0;
 }

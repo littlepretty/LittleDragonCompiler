@@ -1,8 +1,7 @@
 #pragma once
 #include "Token.h"
 
-class Word :
-	public Token
+class Word : public Token
 {
 public:
 	Word(std::string str, Tag t);
@@ -11,17 +10,19 @@ public:
 	virtual std::string toString();
 	bool operator==(const Word& rhs);
 
-	const static Word WordAND;
-	const static Word WordOR;
-	const static Word WordEQ;
-	const static Word WordNE;
-	const static Word WordLE;
-	const static Word WordGE;
-	const static Word WordMINUS;
-	const static Word WordTRUE;
-	const static Word WordFALSE;
-	const static Word WordTEMP;
-	const static Word WordNULL;
+	friend bool operator<(const Word& lhs, const Word& rhs);
+
+	static Word* WordAND;
+	static Word* WordOR;
+	static Word* WordEQ;
+	static Word* WordNE;
+	static Word* WordLE;
+	static Word* WordGE;
+	static Word* WordMINUS;
+	static Word* WordTRUE;
+	static Word* WordFALSE;
+	static Word* WordTEMP;
+	static Word* WordNULL;
 
 	std::string w_lexme;
 };

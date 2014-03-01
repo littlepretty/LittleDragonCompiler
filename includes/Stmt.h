@@ -10,8 +10,8 @@ public:
 	virtual ~Stmt(void);
 	virtual void gen(int b, int a){};
 	bool operator==(const Stmt& rhs);
-	static Stmt StmtNULL;
-	static Stmt Enclosing;
+	static Stmt* StmtNULL;
+	static Stmt* Enclosing;
 
 	int after;
 };
@@ -20,38 +20,38 @@ public:
 class If: public Stmt
 {
 public:
-	If(Expr e, Stmt s);
+	If(Expr* e, Stmt* s);
 	~If();
 
 	virtual void gen(int b, int a);
 private:
-	Expr test;
-	Stmt stmt;
+	Expr* test;
+	Stmt* stmt;
 };
 
 class Else: public Stmt
 {
 public:
-	Else(Expr e, Stmt s1, Stmt s2);
+	Else(Expr* e, Stmt* s1, Stmt* s2);
 	~Else();
 	virtual void gen(int b, int a);
 private:
-	Expr test;
-	Stmt stmt1;
-	Stmt stmt2;
+	Expr* test;
+	Stmt* stmt1;
+	Stmt* stmt2;
 };
 
 class While: public Stmt
 {
 public:
 	While();
-	void init(Expr e, Stmt s);
+	void init(Expr* e, Stmt* s);
 	~While();
 	virtual void gen(int b, int a);
 
 private:
-	Expr test;
-	Stmt stmt;
+	Expr* test;
+	Stmt* stmt;
 };
 
 
@@ -59,39 +59,39 @@ class Do: public Stmt
 {
 public:
 	Do();
-	void init(Expr e, Stmt s);
+	void init(Expr* e, Stmt* s);
 	~Do();
 	virtual void gen(int b, int a);
 
 private:
-	Expr test;
-	Stmt stmt;
+	Expr* test;
+	Stmt* stmt;
 };
 
 class Set: public Stmt
 {
 public:
-	Set(Id i, Expr e);
+	Set(Id* i, Expr* e);
 	~Set();
 	virtual void gen(int b, int a);
 
 private:
-	Id id;
-	Expr exp;
+	Id* id;
+	Expr* exp;
 
 };
 
 class SetElem: public Stmt
 {
 public:
-	SetElem(Access x, Expr e);
+	SetElem(Access* x, Expr* e);
 	~SetElem();
 	virtual void gen(int b, int a);
 
 private:
-	Id array;
-	Expr index;
-	Expr exp;
+	Id* array;
+	Expr* index;
+	Expr* exp;
 };
 
 class Break: public Stmt
@@ -102,19 +102,19 @@ public:
 	virtual void gen(int b, int a);
 
 private:
-	Stmt stmt;
+	Stmt* stmt;
 };
 
 
 class Seq: public Stmt
 {
 public:
-	Seq(Stmt s1, Stmt s2);
+	Seq(Stmt* s1, Stmt* s2);
 	~Seq();
 	virtual void gen(int b, int a);
 private:
-	Stmt stmt1;
-	Stmt stmt2;
+	Stmt* stmt1;
+	Stmt* stmt2;
 };
 
 

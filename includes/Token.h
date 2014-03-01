@@ -13,6 +13,7 @@ typedef enum tag
 class Token
 {
 public:
+	Token();
 	Token(Tag t);
 	Token(char c);
 	virtual ~Token(void);
@@ -20,11 +21,8 @@ public:
 	bool operator==(const Token& rhs) {
 		return this->t_tag == rhs.t_tag;
 	}
-	Token& operator=(const Token rhs) {
-		return Token(rhs.t_tag);
-	}
 
-	const Tag t_tag;
+	Tag t_tag;
 };
 
 class Num : public Token

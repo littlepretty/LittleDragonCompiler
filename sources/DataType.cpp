@@ -1,11 +1,15 @@
 #include "DataType.h"
 
 
-const DataType DataType::TypeINT("int", BASIC, 4);
-const DataType DataType::TypeFLOAT("float", BASIC, 4);
-const DataType DataType::TypeCHAR("char", BASIC, 1);
-const DataType DataType::TypeBOOL("bool", BASIC, 1);
-const DataType DataType::TypeNULL("null", TAG_NULL, 1);
+DataType* DataType::TypeINT  = new DataType("int", BASIC, 4);
+DataType* DataType::TypeFLOAT = new DataType("float", BASIC, 4);
+DataType* DataType::TypeCHAR = new DataType("char", BASIC, 1);
+DataType* DataType::TypeBOOL = new DataType("bool", BASIC, 1);
+DataType* DataType::TypeNULL = new DataType("null", TAG_NULL, 0);
+
+DataType::DataType():Word("null", TAG_NULL),d_width(0)
+{
+}
 
 DataType::DataType(std::string str, Tag t, int w): Word(str, t), d_width(w)
 {
@@ -17,7 +21,7 @@ DataType::~DataType(void)
 }
 
 
-Array::Array(int sz, DataType p):DataType("[]", INDEX, sz*p.d_width), a_size(sz), a_of(p)
+Array::Array(int sz, DataType* p):DataType("[]", INDEX, sz*p->d_width), a_size(sz), a_of(p)
 {
 
 }
@@ -28,11 +32,11 @@ Array::~Array(void)
 std::string Array::toString()
 {
 	std::stringstream result;
-	result<<"["<<a_size<<"]"<<a_of.toString();
+	result<<"["<<a_size<<"]"<<a_of->toString();
 	return result.str();
 }
 
-bool numeric(DataType p) 
+bool numeric(DataType* p) 
 {
 	if (p == DataType::TypeINT || p == DataType::TypeFLOAT || p == DataType::TypeCHAR)
 	{
@@ -42,7 +46,7 @@ bool numeric(DataType p)
 	}
 }
 
-DataType max(DataType p1, DataType p2) 
+DataType* max(DataType* p1, DataType* p2) 
 {
 	if (!numeric(p1) && !numeric(p2))
 	{
@@ -59,7 +63,7 @@ DataType max(DataType p1, DataType p2)
 
 }
 
-DataType check(DataType p1, DataType p2) {
+DataType* check(DataType* p1, DataType* p2) {
 	if (p1 == DataType::TypeBOOL && p2 == DataType::TypeBOOL)
 	{
 		return DataType::TypeBOOL;

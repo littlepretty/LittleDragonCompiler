@@ -1,8 +1,13 @@
 #include "Expr.h"
 
-const Expr ExprNULL; 
+Expr* Expr::ExprNULL = new Expr(); 
 
-Expr::Expr(Token tok, DataType p):op(tok), type(p) 
+Expr::Expr()
+{
+
+}
+
+Expr::Expr(Token* tok, DataType* p):op(tok), type(p) 
 {
 
 }
@@ -18,13 +23,13 @@ bool Expr::operator==(const Expr& rhs)
 }
 
 
-Expr Expr:: gen()
+Expr* Expr:: gen()
 {
-	return *this;
+	return this;
 }
-Expr Expr::reduce() 
+Expr* Expr::reduce() 
 {
-	return *this;
+	return this;
 }
 void Expr::jumping(int t, int f) 
 {
@@ -53,10 +58,17 @@ void Expr::emitJumps(std::string test, int t, int f)
 }
 
 std::string Expr::toString() {
-	return op.toString();
+	return op->toString();
 }
 
-Id::Id(Token id, DataType p, int b):Expr(id, p), offset(b) 
+Id* Id::IdNULL = new Id();
+
+Id::Id()
+{
+
+}
+
+Id::Id(Token* id, DataType* p, int b):Expr(id, p), offset(b) 
 {
 }
 
@@ -67,7 +79,7 @@ Id::~Id(void)
 
 int Temp::count = 0;
 
-Temp::Temp(DataType p): Expr(Word::WordTEMP, p) {
+Temp::Temp(DataType* p): Expr(Word::WordTEMP, p) {
 	number = ++count;
 };
 Temp::~Temp()
@@ -80,11 +92,11 @@ std::string Temp::toString() {
 	return result.str();
 }
 
-const Constant Constant::ConstantTRUE(Word::WordTRUE, DataType::TypeBOOL);
-const Constant Constant::ConstantFALSE(Word::WordFALSE, DataType::TypeBOOL);
+Constant* Constant::ConstantTRUE = new Constant(Word::WordTRUE, DataType::TypeBOOL);
+Constant* Constant::ConstantFALSE = new Constant(Word::WordFALSE, DataType::TypeBOOL);
 
-Constant::Constant(Token tok, DataType p): Expr(tok,p) {};
-Constant::Constant(int i): Expr(Num(i), DataType::TypeINT) {};
+Constant::Constant(Token* tok, DataType* p): Expr(tok,p) {};
+Constant::Constant(int i): Expr(new Num(i), DataType::TypeINT) {};
 
 Constant::~Constant()
 {
@@ -92,12 +104,12 @@ Constant::~Constant()
 }
 
 void Constant::jumping(int t, int f) {
-	if (*this == Constant::ConstantTRUE && t != 0)
+	if (this == Constant::ConstantTRUE && t != 0)
 	{
 		std::stringstream result;
 		result<<"goto L"<<t;
 		emit(result.str());
-	} else if (*this == ConstantFALSE && f != 0)
+	} else if (this == ConstantFALSE && f != 0)
 	{
 		std::stringstream result;
 		result<<"goto L"<<f;

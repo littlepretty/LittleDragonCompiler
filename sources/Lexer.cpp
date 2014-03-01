@@ -9,12 +9,12 @@ Lexer::Lexer(void)
 	reserve(Word("while", WHILE));
 	reserve(Word("do", DO));
 	reserve(Word("break", BREAK));
-	reserve(Word::WordTRUE);
-	reserve(Word::WordFALSE);
-	reserve(DataType::TypeINT);
-	reserve(DataType::TypeFLOAT);
-	reserve(DataType::TypeCHAR);
-	reserve(DataType::TypeBOOL);
+	reserve(*Word::WordTRUE);
+	reserve(*Word::WordFALSE);
+	reserve(*DataType::TypeINT);
+	reserve(*DataType::TypeFLOAT);
+	reserve(*DataType::TypeCHAR);
+	reserve(*DataType::TypeBOOL);
 }
 
 
@@ -22,7 +22,7 @@ Lexer::~Lexer(void)
 {
 }
 
-Token Lexer::scan() {
+Token* Lexer::scan() {
 	for ( ; ; readChar())
 	{	
 		if (peekChar == ' ' || peekChar == '\t')
@@ -43,7 +43,7 @@ Token Lexer::scan() {
 			return Word::WordAND;
 		} else {
 			//return Token('&');
-			return Token(BIT_AND);
+			return new Token(BIT_AND);
 		}
 		break;
 	case '|':
@@ -52,7 +52,7 @@ Token Lexer::scan() {
 			return Word::WordOR;
 		} else {
 			//return Token('|');
-			return Token(BIT_OR);
+			return new Token(BIT_OR);
 		}
 		break;
 	case '=':
@@ -61,7 +61,7 @@ Token Lexer::scan() {
 			return Word::WordEQ;
 		} else {
 			//return Token('=');
-			return Token(ASSIGN);
+			return new Token(ASSIGN);
 		}
 		break;
 	case '<':
@@ -70,7 +70,7 @@ Token Lexer::scan() {
 			return Word::WordLE;
 		} else {
 			//return Token('<');
-			return Token(LT);
+			return new Token(LT);
 		}
 		break;
 	case '>':
@@ -79,7 +79,7 @@ Token Lexer::scan() {
 			return Word::WordGE;
 		} else {
 			//return Token('>');
-			return Token(GT);
+			return new Token(GT);
 		}
 		break;
 	case '!':
@@ -88,7 +88,7 @@ Token Lexer::scan() {
 			return Word::WordNE;
 		} else {
 			//return Token('!');
-			return Token(NOT);
+			return new Token(NOT);
 		}
 		break;
 	default:
@@ -104,7 +104,7 @@ Token Lexer::scan() {
 		} while (isdigit(peekChar));
 		if (peekChar != '.')
 		{	
-			return Token(NUM);	
+			return new Token(NUM);	
 		}
 		float f = (float)v;
 		float d = 10;
@@ -112,7 +112,7 @@ Token Lexer::scan() {
 			f = f + (float)(peekChar-'0')/d;
 			d = d * 10;
 		}
-		return Token(REAL);
+		return new Token(REAL);
 	}
 	if (isalpha(peekChar))
 	{
@@ -123,28 +123,28 @@ Token Lexer::scan() {
 			readChar();
 		} while (isalpha(peekChar));
 		std::string id = idSS.str();
-		Word w = findByString(id);
+		Word* w = findByString(id);
 		if (w == Word::WordNULL)
 		{
-			Word idWord(id, ID);
-			reserve(idWord);
+			Word* idWord = new Word(id, ID);
+			reserve(*idWord);
 			return idWord;
 		} 
 		return w;
 	}
-	Token tok(peekChar);
+	Token* tok = new Token(peekChar);
 	peekChar = ' ';
 	return tok;
 }
 void Lexer::reserve(Word w) {
 	words.push_back(w);
 }
-Word Lexer::findByString(std::string& str) {
+Word* Lexer::findByString(std::string& str) {
 	for (std::vector<Word>::iterator iter = words.begin(); iter != words.end(); ++iter)
 	{
 		if (iter->w_lexme.compare(str) == 0)
 		{
-			return *iter;
+			return &(*iter);
 		}
 	}
 	return Word::WordNULL;
@@ -152,6 +152,7 @@ Word Lexer::findByString(std::string& str) {
 void Lexer::readChar() {
 	std::cin>>peekChar;
 }
+
 bool Lexer::readChar(char c) {
 	readChar();
 	if (peekChar != c)

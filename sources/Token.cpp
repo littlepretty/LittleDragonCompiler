@@ -1,6 +1,10 @@
 #include "Token.h"
 #include <sstream>
 
+Token::Token()
+{
+
+}
 Token::Token(Tag t): t_tag(t)
 {
 }

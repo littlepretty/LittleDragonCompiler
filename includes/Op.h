@@ -6,46 +6,47 @@
 class Op : public Expr
 {
 public:
-	Op(Token tok, DataType p);
+	Op(Token* tok, DataType* p);
 	virtual ~Op(void);
 
-	virtual Expr reduce();
+	virtual Expr* reduce();
 };
 
 class Arith: public Op
 {
 public:
-	Arith(Token tok, Expr e1, Expr e2);
+	Arith(Token* tok, Expr* e1, Expr* e2);
 	~Arith();
 
-	virtual Expr gen();
+	virtual Expr* gen();
 	virtual std::string toString();
 
 private:
-	Expr exp1, exp2;
+	Expr* exp1;
+	Expr* exp2;
 };
 
 class Unary: public Op
 {
 public:
-	Unary(Token tok, Expr e);
+	Unary(Token* tok, Expr* e);
 	~Unary();
-	virtual Expr gen();
+	virtual Expr* gen();
 	virtual std::string toString();
 private:
-	Expr exp;
+	Expr* exp;
 };
 
 class Access: public Op
 {
 public:
-	Access(Id a, Expr i, DataType p);
+	Access(Id* a, Expr* i, DataType* p);
 	~Access();
 
-	virtual Expr gen();
+	virtual Expr* gen();
 	virtual void jumping(int t, int f);
 	virtual std::string toString();
 
-	Id array;
-	Expr index;
+	Id* array;
+	Expr* index;
 };

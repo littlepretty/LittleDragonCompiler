@@ -10,12 +10,12 @@ class Lexer
 public:
 	Lexer(void);
 	virtual ~Lexer(void);
-	Token scan();
+	Token* scan();
 	static int line;
 
 private:
 	void reserve(Word w);
-	Word findByString(std::string& str);
+	Word* findByString(std::string& str);
 	void readChar();
 	bool readChar(char c);
 

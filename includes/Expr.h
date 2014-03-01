@@ -9,27 +9,32 @@
 class Expr: public Node
 {
 public:
-	Expr(Token tok, DataType p);
+	Expr();
+	Expr(Token* tok, DataType* p);
 	virtual ~Expr();
 
 	bool operator==(const Expr& rhs);
-	virtual Expr gen();
-	virtual Expr reduce();
+	virtual Expr* gen();
+	virtual Expr* reduce();
 	virtual void jumping(int t, int f);
 	virtual void emitJumps(std::string test, int t, int f);
 
 	virtual std::string toString();
 
-	Token op;
-	DataType type;
-	const static Expr ExprNULL; 
+	static Expr* ExprNULL; 
+
+	Token* op;
+	DataType* type;
+	
 };
 
 class Id: public Expr
 {
 public:
-	Id(Token id, DataType p, int b);
+	Id();
+	Id(Token* id, DataType* p, int b);
 	~Id();
+	static Id* IdNULL;
 private:
 	int offset;
 };
@@ -37,7 +42,7 @@ private:
 class Temp: public Expr
 {
 public:
-	Temp(DataType p);
+	Temp(DataType* p);
 	~Temp();
 	virtual std::string toString();
 	
@@ -50,13 +55,13 @@ private:
 class Constant: public Expr
 {
 public:
-	Constant(Token tok, DataType p);
+	Constant(Token* tok, DataType* p);
 	Constant(int i);
 	
 	~Constant();
 
 	virtual void jumping(int t, int f);
 
-	const static Constant ConstantTRUE;
-	const static Constant ConstantFALSE;
+	static Constant* ConstantTRUE;
+	static Constant* ConstantFALSE;
 };
