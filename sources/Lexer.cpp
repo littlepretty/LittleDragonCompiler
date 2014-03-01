@@ -2,7 +2,7 @@
 
 int Lexer::line = 1;
 
-Lexer::Lexer(void)
+Lexer::Lexer(std::string sourceFileName)
 {
 	reserve(Word("if", IF));
 	reserve(Word("else", ELSE));
@@ -15,6 +15,8 @@ Lexer::Lexer(void)
 	reserve(*DataType::TypeFLOAT);
 	reserve(*DataType::TypeCHAR);
 	reserve(*DataType::TypeBOOL);
+
+	source.open(sourceFileName.c_str()); 
 }
 
 
@@ -150,7 +152,7 @@ Word* Lexer::findByString(std::string& str) {
 	return Word::WordNULL;
 }
 void Lexer::readChar() {
-	std::cin>>peekChar;
+	source>>peekChar;
 }
 
 bool Lexer::readChar(char c) {

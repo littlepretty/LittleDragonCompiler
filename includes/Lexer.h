@@ -1,6 +1,7 @@
 #pragma once
 #include <iostream>
 #include <vector>
+#include <fstream>
 
 #include "Word.h"
 #include "DataType.h"
@@ -8,7 +9,7 @@
 class Lexer
 {
 public:
-	Lexer(void);
+	Lexer(std::string sourceFileName);
 	virtual ~Lexer(void);
 	Token* scan();
 	static int line;
@@ -21,7 +22,7 @@ private:
 
 	char peekChar;
 	std::vector<Word> words;
-
+	std::ifstream source;
 };
 
 
