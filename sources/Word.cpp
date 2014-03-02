@@ -35,3 +35,9 @@ bool operator<(const Word& lhs, const Word& rhs)
 {
 	return lhs.w_lexme.compare(rhs.w_lexme) < 0;
 }
+
+std::ostream& operator<<(std::ostream& os, const Word& word)
+{
+	os<<"Word\t"<<word.w_lexme<<std::endl;
+	return os;
+}

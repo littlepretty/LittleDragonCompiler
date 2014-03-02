@@ -16,7 +16,8 @@ Lexer::Lexer(std::string sourceFileName)
 	reserve(*DataType::TypeCHAR);
 	reserve(*DataType::TypeBOOL);
 
-	source.open(sourceFileName.c_str()); 
+	source.open(sourceFileName.c_str(), std::ios::in); 
+	source.unsetf(std::ios::skipws);
 }
 
 
@@ -33,7 +34,8 @@ Token* Lexer::scan() {
 		} else if (peekChar == '\n')
 		{
 			line++;
-		} else {
+		} else if (peekChar > 0)
+		{
 			break;
 		}
 	}
@@ -42,55 +44,61 @@ Token* Lexer::scan() {
 	case '&':
 		if (readChar('&'))
 		{
+			std::cout<<(*Word::WordAND);
 			return Word::WordAND;
 		} else {
 			//return Token('&');
-			return new Token(BIT_AND);
+			return new Token('&');
 		}
 		break;
 	case '|':
 		if (readChar('|'))
 		{
+			std::cout<<(*Word::WordOR);
 			return Word::WordOR;
 		} else {
 			//return Token('|');
-			return new Token(BIT_OR);
+			return new Token('|');
 		}
 		break;
 	case '=':
 		if (readChar('='))
 		{
+			std::cout<<(*Word::WordEQ);
 			return Word::WordEQ;
 		} else {
 			//return Token('=');
-			return new Token(ASSIGN);
+			return new Token('=');
 		}
 		break;
 	case '<':
 		if (readChar('='))
 		{
+			std::cout<<(*Word::WordLE);
 			return Word::WordLE;
 		} else {
 			//return Token('<');
-			return new Token(LT);
+			return new Token('<');
 		}
 		break;
 	case '>':
 		if (readChar('='))
 		{
+			std::cout<<(*Word::WordGE);
 			return Word::WordGE;
 		} else {
 			//return Token('>');
-			return new Token(GT);
+			return new Token('>');
 		}
 		break;
 	case '!':
 		if (readChar('='))
 		{
+			std::cout<<(*Word::WordNE);
 			return Word::WordNE;
 		} else {
 			//return Token('!');
-			return new Token(NOT);
+			return new Token('!');
 		}
 		break;
 	default:
@@ -106,6 +114,7 @@ Token* Lexer::scan() {
 		} while (isdigit(peekChar));
 		if (peekChar != '.')
 		{	
+			std::cout<<"Int Value\t"<<v<<std::endl;
 			return new Token(NUM);	
 		}
 		float f = (float)v;
@@ -114,6 +123,7 @@ Token* Lexer::scan() {
 			f = f + (float)(peekChar-'0')/d;
 			d = d * 10;
 		}
+		std::cout<<"Real Value\t"<<v<<std::endl;
 		return new Token(REAL);
 	}
 	if (isalpha(peekChar))
@@ -130,17 +140,22 @@ Token* Lexer::scan() {
 		{
 			Word* idWord = new Word(id, ID);
 			reserve(*idWord);
+			std::cout<<(*idWord);
 			return idWord;
 		} 
+		std::cout<<(*w);
 		return w;
 	}
 	Token* tok = new Token(peekChar);
 	peekChar = ' ';
+	std::cout<<(*tok);
 	return tok;
 }
+
 void Lexer::reserve(Word w) {
 	words.push_back(w);
 }
+
 Word* Lexer::findByString(std::string& str) {
 	for (std::vector<Word>::iterator iter = words.begin(); iter != words.end(); ++iter)
 	{
@@ -151,8 +166,14 @@ Word* Lexer::findByString(std::string& str) {
 	}
 	return Word::WordNULL;
 }
-void Lexer::readChar() {
-	source>>peekChar;
+
+void Lexer::readChar() 
+{
+	if (source.good())
+	{
+		source>>peekChar;
+	}
+	
 }
 
 bool Lexer::readChar(char c) {

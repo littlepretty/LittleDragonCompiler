@@ -1,5 +1,6 @@
 #pragma once
 #include "Token.h"
+#include <iostream>
 
 class Word : public Token
 {
@@ -11,6 +12,7 @@ public:
 	bool operator==(const Word& rhs);
 
 	friend bool operator<(const Word& lhs, const Word& rhs);
+	friend std::ostream& operator<<(std::ostream& os, const Word& word);
 
 	static Word* WordAND;
 	static Word* WordOR;

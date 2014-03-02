@@ -1,11 +1,11 @@
 #pragma once
 
 #include <string>
+#include <iostream>
 
 typedef enum tag
 {
 	AND = 256, BASIC, BREAK, DO, ELSE, EQ, FALSE, GE, IN, IF, ID,
-	BIT_AND, BIT_OR, NOT, ASSIGN, GT, LT, 
 	INDEX, LE, MINUS, NE, NUM, OR, REAL, TEMP, TRUE, WHILE,
 	TAG_NULL
 } Tag;
@@ -21,6 +21,7 @@ public:
 	bool operator==(const Token& rhs) {
 		return this->t_tag == rhs.t_tag;
 	}
+	friend std::ostream& operator<<(std::ostream& os, const Token& tok);
 
 	Tag t_tag;
 };

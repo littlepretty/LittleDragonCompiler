@@ -24,6 +24,12 @@ std::string Token::toString()
 	return result.str(); 
 }
 
+std::ostream& operator<<(std::ostream& os, const Token& tok)
+{
+	os<<"Token\t"<<(char)tok.t_tag<<std::endl;
+	return os;
+}
+
 Num::Num(int val):Token(NUM), n_value(val)
 {
 }

@@ -20,6 +20,11 @@ DataType::~DataType(void)
 {
 }
 
+std::ostream& operator<<(std::ostream os, const DataType& type)
+{
+	os<<"Basic Type\t"<<type.w_lexme<<std::endl;
+	return os;
+}
 
 Array::Array(int sz, DataType* p):DataType("[]", INDEX, sz*p->d_width), a_size(sz), a_of(p)
 {

@@ -10,6 +10,7 @@ public:
 	DataType(std::string str, Tag t, int w);
 	virtual ~DataType(void);
 
+	friend std::ostream& operator<<(std::ostream os, const DataType& type);
 
 	static DataType* TypeINT;
 	static DataType* TypeFLOAT;
