@@ -4,7 +4,7 @@
 
 int main() 
 {
-	Lexer *lex = new Lexer("text.dc");
+	Lexer *lex = new Lexer("sample.dc");
 	Parser parser(lex);
 	parser.program();
 

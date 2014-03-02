@@ -13,7 +13,7 @@ public:
 
 	void put(Word w, Id i);
 	Id get(Word w);
-
+	friend std::ostream& operator<<(std::ostream& os, const Env& env);
 private:
 	Env *prev;
 	std::map<Word, Id> table;

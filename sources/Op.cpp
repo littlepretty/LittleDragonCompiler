@@ -18,8 +18,9 @@ Expr* Op::reduce()
 	return temp;
 }
 
-Arith::Arith(Token* tok, Expr* e1, Expr* e2):Op(tok, max(exp1->type, exp2->type)), exp1(e1), exp2(e2) 
+Arith::Arith(Token* tok, Expr* e1, Expr* e2):Op(tok, NULL), exp1(e1), exp2(e2) 
 {
+	type = max(exp1->type, exp2->type);
 	if (type == DataType::TypeNULL)
 	{
 		error("Type Error");

@@ -61,8 +61,8 @@ void Parser::decls()
 		Token* tok = look;
 		match(ID);
 		match(';');
+		Word *w = (Word *)tok;
 		Id id(tok, p, used);
-		Word *w = (Word*)tok;
 		top->put(*w, id);
 		used = used + p->d_width;
 	}
@@ -70,7 +70,18 @@ void Parser::decls()
 
 DataType* Parser::type()
 {
-	DataType* p = (DataType*)look;
+	Word *lookAsWord = (Word*)look;
+	int width = 0;
+	if (lookAsWord->w_lexme.compare("char") == 0)
+	{
+		width = 1;
+	} else if (lookAsWord->w_lexme.compare("bool") == 0)
+	{
+		width = 1;
+	} else {
+		width = 4;
+	}
+	DataType* p = new DataType(lookAsWord->w_lexme, lookAsWord->t_tag, width);
 	match(BASIC);
 	if (look->t_tag != '[')
 	{
@@ -99,7 +110,8 @@ Stmt* Parser::stmts()
 	{
 		return Stmt::StmtNULL;
 	} else {
-		return new Seq(stmt(), stmts());
+		Stmt *s = stmt();
+		return new Seq(s, stmts());
 	}
 }
 
@@ -168,13 +180,13 @@ Stmt* Parser::stmt()
 Stmt* Parser::assign()
 {
 	Stmt* s = NULL;
-	match(ID);
 	Word* w = (Word*)look;
 	Id* id = &top->get(*w);
 	if (id == Id::IdNULL)
 	{
 		error(w->toString()+" Undeclared");
 	}
+	match(ID);
 	if (look->t_tag == '=')
 	{
 		move();
@@ -243,7 +255,8 @@ Expr* Parser::expr()
 	{
 		Token* tok = look;
 		move();
-		x = new Arith(tok, x, expr());
+		Arith* temp = new Arith(tok, x, expr());
+		x = temp;
 	}
 	return x;
 }
