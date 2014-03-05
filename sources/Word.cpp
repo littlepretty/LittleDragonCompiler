@@ -21,7 +21,7 @@ Word::~Word(void)
 {
 }
 
-std::string Word::toString()
+std::string Word::toString() const
 {
 	return Token::toString() + w_lexme;
 }

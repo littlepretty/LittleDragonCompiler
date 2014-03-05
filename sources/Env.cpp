@@ -34,12 +34,13 @@ Env::~Env(void)
 
 std::ostream& operator<<(std::ostream& os, const Env& env)
 {
-	for (Env* e = env; e != NULL; e = e->prev)
+	for (const Env* e = &env; e != NULL; e = e->prev)
 	{
 		std::map<Word, Id> tab = e->table;
 		for (std::map<Word, Id>::iterator iter = tab.begin(); iter != tab.end(); iter++)
 		{
-			os<<"Word "<<iter->first<<iter->second;
+			os<<"Word "<<iter->first<<"Id "<<iter->second;
 		}
 	}
+	return os;
 }

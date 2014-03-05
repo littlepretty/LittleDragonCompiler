@@ -19,7 +19,7 @@ public:
 	~Arith();
 
 	virtual Expr* gen();
-	virtual std::string toString();
+	virtual std::string toString() const;
 
 private:
 	Expr* exp1;
@@ -32,7 +32,7 @@ public:
 	Unary(Token* tok, Expr* e);
 	~Unary();
 	virtual Expr* gen();
-	virtual std::string toString();
+	virtual std::string toString() const;
 private:
 	Expr* exp;
 };
@@ -45,7 +45,7 @@ public:
 
 	virtual Expr* gen();
 	virtual void jumping(int t, int f);
-	virtual std::string toString();
+	virtual std::string toString() const;
 
 	Id* array;
 	Expr* index;

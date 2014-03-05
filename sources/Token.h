@@ -17,7 +17,7 @@ public:
 	Token(Tag t);
 	Token(char c);
 	virtual ~Token(void);
-	virtual std::string toString();
+	virtual std::string toString() const;
 	bool operator==(const Token& rhs) {
 		return this->t_tag == rhs.t_tag;
 	}
@@ -31,7 +31,7 @@ class Num : public Token
 public:
 	Num(int val);
 	~Num();
-	virtual std::string toString(); 
+	virtual std::string toString() const; 
 
 	const int n_value;
 };
@@ -41,7 +41,7 @@ class Real : public Token
 public:
 	Real(float val);
 	~Real();
-	virtual std::string toString();
+	virtual std::string toString() const;
 private:
 	float r_value;
 };

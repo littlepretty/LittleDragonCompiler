@@ -8,7 +8,7 @@ public:
 	Word(std::string str, Tag t);
 	virtual ~Word(void);
 
-	virtual std::string toString();
+	virtual std::string toString() const;
 	bool operator==(const Word& rhs);
 
 	friend bool operator<(const Word& lhs, const Word& rhs);

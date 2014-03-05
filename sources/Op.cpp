@@ -37,7 +37,8 @@ Expr* Arith::gen()
 	return new Arith(op, exp1->reduce(), exp2->reduce());
 }
 
-std::string Arith::toString() {
+std::string Arith::toString() const 
+{
 	return exp1->toString() + " " + op->toString() + " " + exp2->toString();
 }
 
@@ -60,7 +61,8 @@ Expr* Unary::gen()
 	return new Unary(op, exp->reduce());
 }
 
-std::string Unary::toString() {
+std::string Unary::toString() const
+{
 	return op->toString() + " " + exp->toString();
 }
 
@@ -83,6 +85,7 @@ void Access::jumping(int t, int f) {
 	emitJumps(reduce()->toString(),t,f);
 }
 
-std::string Access::toString() {
+std::string Access::toString() const 
+{
 	return array->toString() + " [ " + index->toString() + " ] ";
 }

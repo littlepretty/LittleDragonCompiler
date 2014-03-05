@@ -17,7 +17,7 @@ Token::~Token(void)
 {
 }
 
-std::string Token::toString()
+std::string Token::toString() const
 {
 	std::stringstream result;
 	result<<t_tag;
@@ -38,7 +38,7 @@ Num::~Num()
 {
 }
 
-std::string Num::toString()
+std::string Num::toString() const
 {
 	std::stringstream result;
 	result<<Token::toString()<<" value = "<<n_value;
@@ -53,7 +53,7 @@ Real::~Real()
 {
 }
 
-std::string Real::toString()
+std::string Real::toString() const
 {
 	std::stringstream result;
 	result<<Token::toString()<<" value = "<<r_value;

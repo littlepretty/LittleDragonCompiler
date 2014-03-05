@@ -10,7 +10,7 @@ public:
 	DataType(std::string str, Tag t, int w);
 	virtual ~DataType(void);
 
-	friend std::ostream& operator<<(std::ostream os, const DataType& type);
+	friend std::ostream& operator<<(std::ostream& os, const DataType& type);
 
 	static DataType* TypeINT;
 	static DataType* TypeFLOAT;
@@ -26,7 +26,7 @@ class Array: public DataType
 public:
 	Array(int sz, DataType* p);
 	~Array(void);
-	virtual std::string toString();
+	virtual std::string toString() const;
 
 	int a_size;
 	DataType* a_of;

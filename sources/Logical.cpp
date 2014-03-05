@@ -27,7 +27,8 @@ Expr* Logical::gen(){
 	return temp;
 }
 
-std::string Logical::toString() {
+std::string Logical::toString() const
+{
 	return exp1->toString() + " " + op->toString() + " " + exp2->toString();
 }
 
@@ -81,7 +82,8 @@ Not::~Not()
 void Not::jumping(int t, int f) {
 	jumping(f,t);
 }
-std::string Not::toString() {
+std::string Not::toString() const
+{
 	return op->toString() + " " + exp2->toString();
 }
 

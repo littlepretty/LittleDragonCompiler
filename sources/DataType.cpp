@@ -20,7 +20,7 @@ DataType::~DataType(void)
 {
 }
 
-std::ostream& operator<<(std::ostream os, const DataType& type)
+std::ostream& operator<<(std::ostream& os, const DataType& type)
 {
 	os<<"Basic Type\t"<<type.w_lexme<<std::endl;
 	return os;
@@ -34,7 +34,7 @@ Array::~Array(void)
 {
 
 }
-std::string Array::toString()
+std::string Array::toString() const
 {
 	std::stringstream result;
 	result<<"["<<a_size<<"]"<<a_of->toString();
