@@ -39,7 +39,7 @@ std::ostream& operator<<(std::ostream& os, const Env& env)
 		std::map<Word, Id> tab = e->table;
 		for (std::map<Word, Id>::iterator iter = tab.begin(); iter != tab.end(); iter++)
 		{
-			os<<"Word "<<iter->first<<"Id "<<iter->second;
+			os<<"Word "<<iter->first<<"\tId "<<iter->second;
 		}
 	}
 	return os;

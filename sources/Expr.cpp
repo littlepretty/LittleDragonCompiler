@@ -27,14 +27,17 @@ Expr* Expr:: gen()
 {
 	return this;
 }
+
 Expr* Expr::reduce() 
 {
 	return this;
 }
+
 void Expr::jumping(int t, int f) 
 {
 	emitJumps(toString(), t, f);
 }
+
 void Expr::emitJumps(std::string test, int t, int f) 
 {
 	std::stringstream ifPart, elsePart;
@@ -86,7 +89,7 @@ Id::~Id(void)
 
 std::ostream& operator<<(std::ostream& os, const Id& id)
 {
-	os<<"Op Token "<<id.op<< "Expr Type "<<id.type<<"Offset "<<id.offset<<std::endl;
+	os<<"Id Token "<<id.op<< "Id Type "<<id.type<<"Offset "<<id.offset<<std::endl;
 	return os;
 }
 
@@ -108,7 +111,7 @@ std::string Temp::toString() const
 
 std::ostream& operator<<(std::ostream& os, const Temp& temp)
 {
-	os <<temp.toString()<<std::endl;
+	os <<"Temp "<<temp.toString()<<std::endl;
 	return os;
 }
 
@@ -135,4 +138,10 @@ void Constant::jumping(int t, int f) {
 		result<<"goto L"<<f;
 		emit(result.str());
 	}
+}
+
+std::ostream& operator<<(std::ostream& os, const Constant& constant)
+{
+	os<<"Constant Token"<<constant.op<<"Type "<<constant.type<<std::endl;
+	return os;
 }

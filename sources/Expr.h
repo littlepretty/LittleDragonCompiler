@@ -68,6 +68,8 @@ public:
 	
 	~Constant();
 
+	friend std::ostream& operator<<(std::ostream& os, const Constant& constant);
+
 	virtual void jumping(int t, int f);
 
 	static Constant* ConstantTRUE;

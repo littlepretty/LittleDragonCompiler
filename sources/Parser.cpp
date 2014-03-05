@@ -58,11 +58,11 @@ void Parser::decls()
 {
 	while(look->t_tag == BASIC) {
 		DataType* p = type();
-		Token* tok = look;
+		Token tok = *look;
 		match(ID);
 		match(';');
-		Word *w = (Word *)tok;
-		Id id(tok, p, used);
+		Word *w = (Word *)&tok;
+		Id id(&tok, p, used);
 		top->put(*w, id);
 		used = used + p->d_width;
 	}
@@ -205,9 +205,9 @@ Expr* Parser::boolExpr()
 	Expr* x = join();
 	while(look->t_tag == OR)
 	{
-		Token* tok = look;
+		Token tok = *look;
 		move();
-		x = new Or(tok, x, join());
+		x = new Or(&tok, x, join());
 	}
 	return x;
 }
@@ -217,9 +217,9 @@ Expr* Parser::join()
 	Expr* x = equality();
 	while(look->t_tag == AND)
 	{
-		Token* tok = look;
+		Token tok = *look;
 		move();
-		x = new And(tok, x, equality());
+		x = new And(&tok, x, equality());
 	}
 	return x;
 }
@@ -229,9 +229,9 @@ Expr* Parser::equality()
 	Expr* x = rel();
 	while(look->t_tag == EQ || look->t_tag == NE)
 	{
-		Token* tok = look;
+		Token tok = *look;
 		move();
-		x= new Rel (tok, x, rel());
+		x= new Rel (&tok, x, rel());
 	}
 	return x;
 }
@@ -241,9 +241,9 @@ Expr* Parser::rel()
 	Expr* x = expr();
 	if (look->t_tag == '<' || look->t_tag == '>' || look->t_tag ==LE || look->t_tag == GE)
 	{
-		Token* tok = look;
+		Token tok = *look;
 		move();
-		return new Rel(tok, x, expr());
+		return new Rel(&tok, x, expr());
 	}
 	return x;
 }
@@ -253,9 +253,9 @@ Expr* Parser::expr()
 	Expr* x = term();
 	while(look->t_tag == '+' || look->t_tag == '-')
 	{
-		Token* tok = look;
+		Token tok = *look;
 		move();
-		Arith* temp = new Arith(tok, x, expr());
+		Arith* temp = new Arith(&tok, x, expr());
 		x = temp;
 	}
 	return x;
@@ -266,9 +266,9 @@ Expr* Parser::term()
 	Expr* x = unary();
 	while(look->t_tag == '*' || look->t_tag == '/')
 	{
-		Token* tok = look;
+		Token tok = *look;
 		move();
-		x = new Arith(tok, x, unary());
+		x = new Arith(&tok, x, unary());
 	}
 	return x;
 }
@@ -281,9 +281,9 @@ Expr* Parser::unary()
 		return new Unary(Word::WordMINUS, unary());
 	} else if (look->t_tag == '!')
 	{
-		Token* tok = look;
+		Token tok = *look;
 		move();
-		return new Not(tok, unary());
+		return new Not(&tok, unary());
 	} else {
 		return factor();
 	}
