@@ -57,8 +57,15 @@ void Expr::emitJumps(std::string test, int t, int f)
 	}
 }
 
-std::string Expr::toString() {
+std::string Expr::toString() const
+{
 	return op->toString();
+}
+
+std::ostream& operator<<(std::ostream& os, const Expr& expr)
+{
+	os << "Op Token " << expr.op << "Expr Type " << expr.type << std::endl;
+	return os;
 }
 
 Id* Id::IdNULL = new Id();
@@ -77,6 +84,12 @@ Id::~Id(void)
 
 }
 
+std::ostream& operator<<(std::ostream& os, const Id& id)
+{
+	os<<"Op Token "<<id.op<< "Expr Type "<<id.type<<"Offset "<<id.offset<<std::endl;
+	return os;
+}
+
 int Temp::count = 0;
 
 Temp::Temp(DataType* p): Expr(Word::WordTEMP, p) {
@@ -86,10 +99,17 @@ Temp::~Temp()
 {
 
 }
-std::string Temp::toString() {
+std::string Temp::toString() const
+{
 	std::stringstream result;
 	result<<"t"<<number;
 	return result.str();
+}
+
+std::ostream& operator<<(std::ostream& os, const Temp& temp)
+{
+	os <<temp.toString()<<std::endl;
+	return os;
 }
 
 Constant* Constant::ConstantTRUE = new Constant(Word::WordTRUE, DataType::TypeBOOL);
