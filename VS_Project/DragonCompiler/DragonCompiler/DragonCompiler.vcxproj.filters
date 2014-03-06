@@ -87,8 +87,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\sources\Holmes" />
-    <None Include="..\..\..\sources\sample.dc" />
-  </ItemGroup>
 </Project>
