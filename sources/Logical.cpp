@@ -1,8 +1,9 @@
 #include "Logical.h"
 
 
-Logical::Logical(Token* tok, Expr* e1, Expr* e2): Expr(tok, check(exp1->type, exp2->type)), exp1(e1), exp2(e2) {
-	if (type == DataType::TypeNULL)
+Logical::Logical(Token* tok, Expr* e1, Expr* e2): Expr(tok, check(e1->type, e2->type)), exp1(e1), exp2(e2) 
+{
+	if (*type == *DataType::TypeNULL)
 	{
 		error("Type Error");
 	}

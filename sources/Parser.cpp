@@ -190,6 +190,7 @@ Stmt* Parser::assign()
 	if (look->t_tag == '=')
 	{
 		move();
+		//	Error, id here is NULL, so id==Id::IdNULL is not working!!!
 		s = new Set(id, boolExpr());
 	} else {
 		Access* x = offset(id);
@@ -243,7 +244,8 @@ Expr* Parser::rel()
 	{
 		Token* tok = look;
 		move();
-		return new Rel(tok, x, expr());
+		Expr *rhsExpr = expr();
+		return new Rel(tok, x, rhsExpr);
 	}
 	return x;
 }
@@ -343,12 +345,14 @@ Access* Parser::offset(Id* a)
 	Array* type = (Array *)a->type;
 	match('[');
 	Expr* index = boolExpr();
-	match(']');
 	DataType* ofType = type->a_of;
 	Expr* w = new Constant(ofType->d_width);
 	Expr* t1 = new Arith(new Token('*'), index, w);
 	Expr* loc = t1;
 	Expr* t2 = NULL;
+
+	match(']');
+
 	while(look->t_tag == '[')
 	{
 		match('[');

@@ -132,7 +132,7 @@ void Do::gen(int b, int a) {
 }
 
 Set::Set(Id* i, Expr* e):id(i), exp(e) {
-	if (check(id->type, exp->type) == DataType::TypeNULL)
+	if (*check(id->type, exp->type) == *DataType::TypeNULL)
 	{
 		error("Type Error");
 	}
@@ -149,7 +149,7 @@ void Set::gen(int b, int a) {
 
 SetElem::SetElem(Access* x, Expr* e): array(x->array), index(x->index), exp(e) 
 {
-	if (check(x->type, exp->type) == DataType::TypeNULL)
+	if (*check(x->type, exp->type) == *DataType::TypeNULL)
 	{
 		error("Type Error");
 	}
