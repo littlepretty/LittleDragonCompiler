@@ -67,7 +67,8 @@ std::string Expr::toString() const
 
 std::ostream& operator<<(std::ostream& os, const Expr& expr)
 {
-	os << "Op Token " << expr.op << "Expr Type " << expr.type << std::endl;
+	os << "Expr Item: ";
+	os << "Op " << expr.op << " Type " << expr.type << std::endl;
 	return os;
 }
 
@@ -89,7 +90,7 @@ Id::~Id(void)
 
 std::ostream& operator<<(std::ostream& os, const Id& id)
 {
-	os<<"Id Token "<<id.op<< "Id Type "<<id.type<<"Offset "<<id.offset<<std::endl;
+	os<<*(id.type)<<"Offset: "<<id.offset<<std::endl;
 	return os;
 }
 
@@ -142,6 +143,7 @@ void Constant::jumping(int t, int f) {
 
 std::ostream& operator<<(std::ostream& os, const Constant& constant)
 {
-	os<<"Constant Token"<<constant.op<<"Type "<<constant.type<<std::endl;
+	os << "Constant Item: ";
+	os<<*(constant.op)<<" "<<*(constant.type)<<std::endl;
 	return os;
 }

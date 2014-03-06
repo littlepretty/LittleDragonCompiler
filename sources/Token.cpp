@@ -26,7 +26,7 @@ std::string Token::toString() const
 
 std::ostream& operator<<(std::ostream& os, const Token& tok)
 {
-	os<<"Token\t"<<(char)tok.t_tag<<std::endl;
+	os<<"Token: "<<(char)tok.t_tag<<"\n";
 	return os;
 }
 

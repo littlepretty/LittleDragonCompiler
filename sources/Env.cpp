@@ -13,6 +13,7 @@ Env::Env(Env* p):prev(p)
 void Env::put(Word w, Id i)
 {
 	table[w] = i;
+	std::cout << *this;
 }
 
 Id Env::get(Word w)
@@ -34,13 +35,15 @@ Env::~Env(void)
 
 std::ostream& operator<<(std::ostream& os, const Env& env)
 {
+	os << "\n\n/*** Begin Environment ***/\n\n";
 	for (const Env* e = &env; e != NULL; e = e->prev)
 	{
 		std::map<Word, Id> tab = e->table;
 		for (std::map<Word, Id>::iterator iter = tab.begin(); iter != tab.end(); iter++)
 		{
-			os<<"Word "<<iter->first<<"\tId "<<iter->second;
+			os<<iter->first<<iter->second<<"\n\n";
 		}
 	}
+	os << "/*** End Environment ***/\n\n";
 	return os;
 }

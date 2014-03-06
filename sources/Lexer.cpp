@@ -18,6 +18,11 @@ Lexer::Lexer(std::string sourceFileName)
 
 	source.open(sourceFileName.c_str(), std::ios::in); 
 	source.unsetf(std::ios::skipws);
+	if (!source.is_open())
+	{
+		std::cout << "Fail to Open File " << sourceFileName << std::endl;
+		exit(1);
+	}
 }
 
 

@@ -38,6 +38,7 @@ bool operator<(const Word& lhs, const Word& rhs)
 
 std::ostream& operator<<(std::ostream& os, const Word& word)
 {
-	os<<"Word\t"<<word.w_lexme<<std::endl;
+	os << "Word: ";
+	os<<word.w_lexme<<"\n";
 	return os;
 }

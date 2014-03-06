@@ -15,14 +15,18 @@ DataType::DataType(std::string str, Tag t, int w): Word(str, t), d_width(w)
 {
 }
 
-
 DataType::~DataType(void)
 {
 }
 
+bool DataType::operator==(const DataType& rhs)
+{
+	return this->w_lexme.compare(rhs.w_lexme) == 0 && this->d_width == rhs.d_width;
+}
+
 std::ostream& operator<<(std::ostream& os, const DataType& type)
 {
-	os<<"Basic Type\t"<<type.w_lexme<<std::endl;
+	os<<"Basic Type: "<<type.w_lexme<<std::endl;
 	return os;
 }
 
@@ -43,7 +47,7 @@ std::string Array::toString() const
 
 bool numeric(DataType* p) 
 {
-	if (p == DataType::TypeINT || p == DataType::TypeFLOAT || p == DataType::TypeCHAR)
+	if (*p == *DataType::TypeINT || *p == *DataType::TypeFLOAT || *p == *DataType::TypeCHAR)
 	{
 		return true;
 	} else {
@@ -56,10 +60,12 @@ DataType* max(DataType* p1, DataType* p2)
 	if (!numeric(p1) && !numeric(p2))
 	{
 		return DataType::TypeNULL;;
-	} else if (p1 == DataType::TypeFLOAT || p2 == DataType::TypeFLOAT)
+	}
+	else if (*p1 == *DataType::TypeFLOAT || *p2 == *DataType::TypeFLOAT)
 	{	
 		return DataType::TypeFLOAT;
-	} else if (p1 == DataType::TypeINT || p2 == DataType::TypeINT)
+	}
+	else if (*p1 == *DataType::TypeINT || *p2 == *DataType::TypeINT)
 	{
 		return DataType::TypeINT;
 	} else {
@@ -69,16 +75,19 @@ DataType* max(DataType* p1, DataType* p2)
 }
 
 DataType* check(DataType* p1, DataType* p2) {
-	if (p1 == DataType::TypeBOOL && p2 == DataType::TypeBOOL)
+	if (*p1 == *DataType::TypeBOOL && *p2 == *DataType::TypeBOOL)
 	{
 		return DataType::TypeBOOL;
-	} else if (p1 == DataType::TypeINT && p2 == DataType::TypeINT)
+	}
+	else if (*p1 == *DataType::TypeINT && *p2 == *DataType::TypeINT)
 	{
 		return DataType::TypeBOOL;
-	} else if (p1 == DataType::TypeFLOAT && p2 == DataType::TypeFLOAT)
+	}
+	else if (*p1 == *DataType::TypeFLOAT && *p2 == *DataType::TypeFLOAT)
 	{
 		return DataType::TypeBOOL;
-	} else if (p1 == DataType::TypeCHAR && p2 == DataType::TypeCHAR)
+	}
+	else if (*p1 == *DataType::TypeCHAR && *p2 == *DataType::TypeCHAR)
 	{
 		return DataType::TypeBOOL;
 	} else {
