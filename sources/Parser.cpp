@@ -375,7 +375,8 @@ Access* Parser::offset(Id* a)
 		t2 = new Arith(new Token('+'), loc, t1);
 		loc = t2;
 	}
-	return new Access(a, loc, ofType);
+	Id *array = new Id(*a);
+	return new Access(array, loc, ofType);
 }
 
 
