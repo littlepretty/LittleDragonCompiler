@@ -3,6 +3,7 @@
 	int j;
 	float v;
 	float[100] a;
+	float x;
 	
 	while(true) 
 	{

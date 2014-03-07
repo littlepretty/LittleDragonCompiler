@@ -88,6 +88,11 @@ Id::~Id(void)
 
 }
 
+bool Id::operator==(const Id& rhs)
+{
+	return this->op == rhs.op && this->type == rhs.type && this->offset == rhs.offset;
+}
+
 std::ostream& operator<<(std::ostream& os, const Id& id)
 {
 	os<<*(id.type)<<"Offset: "<<id.offset<<std::endl;

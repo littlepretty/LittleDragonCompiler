@@ -30,9 +30,14 @@ Lexer::~Lexer(void)
 {
 }
 
-Token* Lexer::scan() {
+Token* Lexer::scan() 
+{	
 	for ( ; ; readChar())
 	{	
+		if (peekChar == EOF)
+		{
+			return NULL;
+		}
 		if (peekChar == ' ' || peekChar == '\t')
 		{	
 			continue;
@@ -120,7 +125,7 @@ Token* Lexer::scan() {
 		if (peekChar != '.')
 		{	
 			std::cout<<"Int Value\t"<<v<<std::endl;
-			return new Token(NUM);	
+			return new Num(v);
 		}
 		float f = (float)v;
 		float d = 10;
@@ -129,7 +134,7 @@ Token* Lexer::scan() {
 			d = d * 10;
 		}
 		std::cout<<"Real Value\t"<<v<<std::endl;
-		return new Token(REAL);
+		return new Real(f);
 	}
 	if (isalpha(peekChar))
 	{
@@ -174,16 +179,20 @@ Word* Lexer::findByString(std::string& str) {
 
 void Lexer::readChar() 
 {
-	if (source.good())
+	if (source.eof())
+	{
+		peekChar = EOF;
+	} else if (source.good())
 	{
 		source>>peekChar;
 	}
 	
 }
 
-bool Lexer::readChar(char c) {
+bool Lexer::readChar(char c) 
+{
 	readChar();
-	if (peekChar != c)
+	if (peekChar != c || peekChar == EOF)
 	{
 		return false;
 	}

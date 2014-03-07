@@ -39,6 +39,7 @@ public:
 
 	~Id();
 
+	bool operator==(const Id& rhs);
 	friend std::ostream& operator<<(std::ostream& os, const Id& id);
 	
 	static Id* IdNULL;

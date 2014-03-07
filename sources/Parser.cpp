@@ -182,7 +182,7 @@ Stmt* Parser::assign()
 	Stmt* s = NULL;
 	Word* w = (Word*)look;
 	Id* id = &top->get(*w);
-	if (id == Id::IdNULL)
+	if (*id == *Id::IdNULL)
 	{
 		error(w->toString()+" Undeclared");
 	}
