@@ -190,12 +190,13 @@ Stmt* Parser::assign()
 	if (look->t_tag == '=')
 	{
 		move();
-		//	Error, id here is NULL, so id==Id::IdNULL is not working!!!
-		s = new Set(id, boolExpr());
+		Expr *rhs = boolExpr();
+		s = new Set(id, rhs);
 	} else {
 		Access* x = offset(id);
 		match('=');
-		s = new SetElem(x, boolExpr());
+		Expr *rhs = boolExpr();
+		s = new SetElem(x, rhs);
 	}
 	match(';');
 	return s;
@@ -208,7 +209,9 @@ Expr* Parser::boolExpr()
 	{
 		Token* tok = look;
 		move();
-		x = new Or(tok, x, join());
+		Expr *rhs = join();
+		Or* or = new Or(tok, x, rhs);
+		x = or;
 	}
 	return x;
 }
@@ -220,7 +223,9 @@ Expr* Parser::join()
 	{
 		Token* tok = look;
 		move();
-		x = new And(tok, x, equality());
+		Expr *rhs = equality();
+		And *and = new And(tok, x, rhs);
+		x = and;
 	}
 	return x;
 }
@@ -232,7 +237,9 @@ Expr* Parser::equality()
 	{
 		Token* tok = look;
 		move();
-		x= new Rel (tok, x, rel());
+		Expr *rhsExpr = rel();
+		Rel *rel= new Rel (tok, x, rhsExpr);
+		x = rel;
 	}
 	return x;
 }
@@ -245,7 +252,8 @@ Expr* Parser::rel()
 		Token* tok = look;
 		move();
 		Expr *rhsExpr = expr();
-		return new Rel(tok, x, rhsExpr);
+		Rel *rel = new Rel(tok, x, rhsExpr);
+		return rel;
 	}
 	return x;
 }

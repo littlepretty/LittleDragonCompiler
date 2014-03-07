@@ -7,7 +7,7 @@ Expr::Expr()
 
 }
 
-Expr::Expr(Token* tok, DataType* p):op(tok), type(p) 
+Expr::Expr(Token* tok, DataType* p) :op(tok), type(p)
 {
 
 }
@@ -101,9 +101,11 @@ std::ostream& operator<<(std::ostream& os, const Id& id)
 
 int Temp::count = 0;
 
-Temp::Temp(DataType* p): Expr(Word::WordTEMP, p) {
+Temp::Temp(DataType* p): Expr(Word::WordTEMP, p) 
+{
 	number = ++count;
-};
+}
+
 Temp::~Temp()
 {
 
@@ -124,8 +126,15 @@ std::ostream& operator<<(std::ostream& os, const Temp& temp)
 Constant* Constant::ConstantTRUE = new Constant(Word::WordTRUE, DataType::TypeBOOL);
 Constant* Constant::ConstantFALSE = new Constant(Word::WordFALSE, DataType::TypeBOOL);
 
-Constant::Constant(Token* tok, DataType* p): Expr(tok,p) {};
-Constant::Constant(int i): Expr(new Num(i), DataType::TypeINT) {};
+Constant::Constant(Token* tok, DataType* p): Expr(tok,p) 
+{
+
+}
+
+Constant::Constant(int i): Expr(new Num(i), DataType::TypeINT) 
+{
+
+}
 
 Constant::~Constant()
 {

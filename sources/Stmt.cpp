@@ -16,8 +16,16 @@ bool Stmt::operator==(const Stmt& rhs)
 	return this->after == rhs.after && this->lexerLine == rhs.after;
 }
 
+void Stmt::gen(int b, int a)
+{
 
-If::If(Expr* e, Stmt* s):test(e), stmt(s) {
+}
+
+If::If(Expr* e, Stmt* s):test(e), stmt(s) 
+{
+	//test = new Expr(*e);
+	//stmt = new Stmt(*s);
+
 	if (test->type == DataType::TypeBOOL)
 	{
 	} else {
@@ -37,7 +45,12 @@ void If::gen(int b, int a) {
 	stmt->gen(label,a);
 }
 
-Else::Else(Expr* e, Stmt* s1, Stmt* s2):test(e), stmt1(s1), stmt2(s2) {
+Else::Else(Expr* e, Stmt* s1, Stmt* s2) :test(e), stmt1(s1), stmt2(s2)
+{
+	//test = new Expr(*e);
+	//stmt1 = new Stmt(*s1);
+	//stmt2 = new Stmt(*s2);
+
 	if (test->type == DataType::TypeBOOL)
 	{
 		
@@ -131,7 +144,9 @@ void Do::gen(int b, int a) {
 	test->jumping(b,0);
 }
 
-Set::Set(Id* i, Expr* e):id(i), exp(e) {
+Set::Set(Id* i, Expr* e):id(i), exp(e) 
+{
+	//exp = new Expr(*e);
 	if (*check(id->type, exp->type) == *DataType::TypeNULL)
 	{
 		error("Type Error");
@@ -142,13 +157,18 @@ Set::~Set()
 {
 
 }
-void Set::gen(int b, int a) {
+void Set::gen(int b, int a) 
+{
 	emit(id->toString() + " = " + exp->gen()->toString());
 }
 
 
 SetElem::SetElem(Access* x, Expr* e): array(x->array), index(x->index), exp(e) 
 {
+	/*
+	index = new Expr(*(x->index));
+	exp = new Expr(*e);
+	*/
 	if (*check(x->type, exp->type) == *DataType::TypeNULL)
 	{
 		error("Type Error");
@@ -159,14 +179,16 @@ SetElem::~SetElem()
 {
 
 }
-void SetElem::gen(int b, int a) {
+void SetElem::gen(int b, int a) 
+{
 	std::string s1 = index->reduce()->toString();
 	std::string s2 = exp->reduce()->toString();
 	emit(array->toString() + " [ " + s1 + "] = " + s2);
 }
 
 
-Break::Break() {
+Break::Break() 
+{
 	if (Stmt::StmtNULL == Stmt::Enclosing)
 	{
 		error("Unenclosed Break");
@@ -183,10 +205,10 @@ void Break::gen(int b, int a)
 	emit(gt.str());
 }
 
-Seq::Seq(Stmt* s1, Stmt* s2):stmt1(s1), stmt2(s2) 
+Seq::Seq(Stmt* s1, Stmt* s2) :stmt1(s1), stmt2(s2)
 {
-
 }
+
 Seq::~Seq()
 {
 

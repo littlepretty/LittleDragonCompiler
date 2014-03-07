@@ -10,7 +10,7 @@ public:
 	DataType(std::string str, Tag t, int w);
 	virtual ~DataType(void);
 
-	bool operator==(const DataType& rhs);
+	bool operator==(const DataType& rhs) const;
 
 	friend std::ostream& operator<<(std::ostream& os, const DataType& type);
 
@@ -20,8 +20,13 @@ public:
 	static DataType* TypeBOOL;
 	static DataType* TypeNULL;
 
+	bool numeric() const;
+
 	int d_width;
 };
+
+DataType* max(DataType* p1, DataType* p2);
+DataType* check(DataType* p1, DataType* p2);
 
 class Array: public DataType
 {
@@ -34,7 +39,5 @@ public:
 	DataType* a_of;
 };
 
-bool numeric(DataType* p);
-DataType* max(DataType* p1, DataType* p2);
-DataType* check(DataType* p1, DataType* p2);
+
 

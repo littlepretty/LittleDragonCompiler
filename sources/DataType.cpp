@@ -19,7 +19,7 @@ DataType::~DataType(void)
 {
 }
 
-bool DataType::operator==(const DataType& rhs)
+bool DataType::operator==(const DataType& rhs) const 
 {
 	return this->w_lexme.compare(rhs.w_lexme) == 0 && this->d_width == rhs.d_width;
 }
@@ -45,9 +45,9 @@ std::string Array::toString() const
 	return result.str();
 }
 
-bool numeric(DataType* p) 
+bool DataType::numeric() const 
 {
-	if (*p == *DataType::TypeINT || *p == *DataType::TypeFLOAT || *p == *DataType::TypeCHAR)
+	if (*this == *DataType::TypeINT || *this == *DataType::TypeFLOAT || *this == *DataType::TypeCHAR)
 	{
 		return true;
 	} else {
@@ -55,9 +55,9 @@ bool numeric(DataType* p)
 	}
 }
 
-DataType* max(DataType* p1, DataType* p2) 
+DataType* max(DataType* p1, DataType* p2)  
 {
-	if (!numeric(p1) && !numeric(p2))
+	if (!p1->numeric() && !p2->numeric())
 	{
 		return DataType::TypeNULL;;
 	}
@@ -74,7 +74,8 @@ DataType* max(DataType* p1, DataType* p2)
 
 }
 
-DataType* check(DataType* p1, DataType* p2) {
+DataType* check(DataType* p1, DataType* p2)
+{
 	if (*p1 == *DataType::TypeBOOL && *p2 == *DataType::TypeBOOL)
 	{
 		return DataType::TypeBOOL;

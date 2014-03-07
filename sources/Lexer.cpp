@@ -57,7 +57,7 @@ Token* Lexer::scan()
 			std::cout<<(*Word::WordAND);
 			return Word::WordAND;
 		} else {
-			//return Token('&');
+			std::cout << Token('&');
 			return new Token('&');
 		}
 		break;
@@ -67,7 +67,7 @@ Token* Lexer::scan()
 			std::cout<<(*Word::WordOR);
 			return Word::WordOR;
 		} else {
-			//return Token('|');
+			std::cout << Token('|');
 			return new Token('|');
 		}
 		break;
@@ -77,7 +77,7 @@ Token* Lexer::scan()
 			std::cout<<(*Word::WordEQ);
 			return Word::WordEQ;
 		} else {
-			//return Token('=');
+			std::cout << Token('=');
 			return new Token('=');
 		}
 		break;
@@ -87,7 +87,7 @@ Token* Lexer::scan()
 			std::cout<<(*Word::WordLE);
 			return Word::WordLE;
 		} else {
-			//return Token('<');
+			std::cout << Token('<');
 			return new Token('<');
 		}
 		break;
@@ -97,7 +97,7 @@ Token* Lexer::scan()
 			std::cout<<(*Word::WordGE);
 			return Word::WordGE;
 		} else {
-			//return Token('>');
+			std::cout << Token('>');
 			return new Token('>');
 		}
 		break;
@@ -107,7 +107,7 @@ Token* Lexer::scan()
 			std::cout<<(*Word::WordNE);
 			return Word::WordNE;
 		} else {
-			//return Token('!');
+			std::cout << Token('!');
 			return new Token('!');
 		}
 		break;

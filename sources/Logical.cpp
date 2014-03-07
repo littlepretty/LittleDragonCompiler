@@ -1,8 +1,11 @@
 #include "Logical.h"
 
-
-Logical::Logical(Token* tok, Expr* e1, Expr* e2): Expr(tok, check(e1->type, e2->type)), exp1(e1), exp2(e2) 
+Logical::Logical(Token* tok, Expr* e1, Expr* e2) : Expr(tok, NULL), exp1(NULL), exp2(NULL)
 {
+	exp1 = new Expr(*e1);
+	exp2 = new Expr(*e2);
+	DataType *checkedType = check(e1->type, e2->type);
+	type = checkedType;
 	if (*type == *DataType::TypeNULL)
 	{
 		error("Type Error");
