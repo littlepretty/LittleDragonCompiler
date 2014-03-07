@@ -23,7 +23,7 @@ Word::~Word(void)
 
 std::string Word::toString() const
 {
-	return Token::toString() + w_lexme;
+	return w_lexme;
 }
 
 bool Word::operator==(const Word& rhs) 

@@ -190,8 +190,9 @@ Stmt* Parser::assign()
 	if (look->t_tag == '=')
 	{
 		move();
+		Id *lhs = new Id(*id);
 		Expr *rhs = boolExpr();
-		s = new Set(id, rhs);
+		s = new Set(lhs, rhs);
 	} else {
 		Access* x = offset(id);
 		match('=');
@@ -265,7 +266,8 @@ Expr* Parser::expr()
 	{
 		Token* tok = look;
 		move();
-		Arith* temp = new Arith(tok, x, expr());
+		Expr *rhs = expr();
+		Arith* temp = new Arith(tok, x, rhs);
 		x = temp;
 	}
 	return x;
@@ -278,7 +280,8 @@ Expr* Parser::term()
 	{
 		Token* tok = look;
 		move();
-		x = new Arith(tok, x, unary());
+		Expr *rhs = unary();
+		x = new Arith(tok, x, rhs);
 	}
 	return x;
 }
@@ -288,12 +291,14 @@ Expr* Parser::unary()
 	if (look->t_tag == '-')
 	{
 		move();
-		return new Unary(Word::WordMINUS, unary());
+		Expr *rhs = unary();
+		return new Unary(Word::WordMINUS, rhs);
 	} else if (look->t_tag == '!')
 	{
 		Token* tok = look;
 		move();
-		return new Not(tok, unary());
+		Expr *rhs = unary();
+		return new Not(tok, rhs);
 	} else {
 		return factor();
 	}
@@ -321,11 +326,11 @@ Expr* Parser::factor()
 	} else if (look->t_tag == TRUE)
 	{
 		move();
-		return Constant::ConstantTRUE;
+		return new Constant(*Constant::ConstantTRUE);
 	} else if(look->t_tag == FALSE)
 	{
 		move();
-		return Constant::ConstantFALSE;
+		return new Constant(*Constant::ConstantFALSE);
 	} else if (look->t_tag == ID)
 	{
 		std::string s = look->toString();
@@ -338,13 +343,13 @@ Expr* Parser::factor()
 		move();
 		if (look->t_tag != '[')
 		{
-			return id;
+			return new Id(*id);
 		} else {
 			return offset(id);
 		}
 	} else {
 		error("Syntax Error");
-		return Expr::ExprNULL;
+		return new Expr(*Expr::ExprNULL);
 	}
 }
 
