@@ -8,7 +8,7 @@ class Stmt : public Node
 public:
 	Stmt(void);
 	virtual ~Stmt(void);
-	virtual void gen(int b, int a){};
+	virtual void gen(int b, int a);
 	bool operator==(const Stmt& rhs);
 	static Stmt* StmtNULL;
 	static Stmt* Enclosing;

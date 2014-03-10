@@ -11,7 +11,7 @@ public:
 	virtual ~Logical(void);
 
 	virtual Expr* gen();
-	virtual std::string toString();
+	virtual std::string toString() const;
 	Expr* exp1;
 	Expr* exp2;
 };
@@ -38,7 +38,7 @@ public:
 	Not(Token* tok, Expr* e);
 	~Not();
 	virtual void jumping(int t, int f);
-	virtual std::string toString();
+	virtual std::string toString() const;
 };
 
 class Rel: public Logical

@@ -5,6 +5,7 @@
 #include "DataType.h"
 
 #include <sstream>
+#include <iostream>
 
 class Expr: public Node
 {
@@ -19,7 +20,9 @@ public:
 	virtual void jumping(int t, int f);
 	virtual void emitJumps(std::string test, int t, int f);
 
-	virtual std::string toString();
+	virtual std::string toString() const;
+
+	friend std::ostream& operator<<(std::ostream& os, const Expr& expr);
 
 	static Expr* ExprNULL; 
 
@@ -33,7 +36,12 @@ class Id: public Expr
 public:
 	Id();
 	Id(Token* id, DataType* p, int b);
+
 	~Id();
+
+	bool operator==(const Id& rhs);
+	friend std::ostream& operator<<(std::ostream& os, const Id& id);
+	
 	static Id* IdNULL;
 private:
 	int offset;
@@ -44,8 +52,9 @@ class Temp: public Expr
 public:
 	Temp(DataType* p);
 	~Temp();
-	virtual std::string toString();
+	virtual std::string toString() const;
 	
+	friend std::ostream& operator<<(std::ostream& os, const Temp& temp);
 	static int count;
 private:
 	int number;	
@@ -59,6 +68,8 @@ public:
 	Constant(int i);
 	
 	~Constant();
+
+	friend std::ostream& operator<<(std::ostream& os, const Constant& constant);
 
 	virtual void jumping(int t, int f);
 
