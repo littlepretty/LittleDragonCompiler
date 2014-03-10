@@ -183,7 +183,7 @@ void SetElem::gen(int b, int a)
 {
 	std::string s1 = index->reduce()->toString();
 	std::string s2 = exp->reduce()->toString();
-	emit(array->toString() + " [ " + s1 + "] = " + s2);
+	emit(array->toString() + " [ " + s1 + " ] = " + s2);
 }
 
 

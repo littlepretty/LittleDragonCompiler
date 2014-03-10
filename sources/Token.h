@@ -5,7 +5,7 @@
 
 typedef enum tag
 {
-	AND = 256, BASIC, BREAK, DO, ELSE, EQ, FALSE, GE, IN, IF, ID,
+	AND = 256, BASIC, BREAK, DO, ELSE, EQ, FALSE, GE, IF, ID,
 	INDEX, LE, MINUS, NE, NUM, OR, REAL, TEMP, TRUE, WHILE,
 	TAG_NULL
 } Tag;
@@ -32,6 +32,7 @@ public:
 	Num(int val);
 	~Num();
 	virtual std::string toString() const; 
+	friend std::ostream& operator<<(std::ostream& os, const Num& tok);
 
 	const int n_value;
 };
@@ -42,6 +43,8 @@ public:
 	Real(float val);
 	~Real();
 	virtual std::string toString() const;
+	friend std::ostream& operator<<(std::ostream& os, const Real& tok);
+
 private:
 	float r_value;
 };

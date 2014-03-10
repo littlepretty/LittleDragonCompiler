@@ -41,7 +41,7 @@ Array::~Array(void)
 std::string Array::toString() const
 {
 	std::stringstream result;
-	result<<"["<<a_size<<"]"<<a_of->toString();
+	result<<"[ "<<a_size<<" ] "<<a_of->toString();
 	return result.str();
 }
 
