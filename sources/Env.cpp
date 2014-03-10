@@ -13,7 +13,6 @@ Env::Env(Env* p):prev(p)
 void Env::put(Word w, Id i)
 {
 	table[w] = i;
-	std::cout << *this;
 }
 
 Id Env::get(Word w)

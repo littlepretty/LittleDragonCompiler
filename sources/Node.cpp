@@ -1,7 +1,11 @@
 #include "Node.h"
 #include "Lexer.h"
+#include "ExternGlobal.h"
+
 
 int Node::label = 0;
+
+
 
 Node::Node(void)
 {
@@ -10,17 +14,28 @@ Node::Node(void)
 
 Node::~Node(void)
 {
+
 }
 
-void Node::error(std::string str) {
+void Node::error(std::string str) 
+{
 	std::cerr<<"Near Line "<<lexerLine<<": "<<str<<std::endl;
+	intermediaRepresentStream << "Near Line " << lexerLine << ": " << str << std::endl;
 }
-int Node::newLabel() {
+
+int Node::newLabel() 
+{
 	return ++label;
 }
-void Node::emitLabel(int i) {
+
+void Node::emitLabel(int i) 
+{
 	std::cout<<"L"<<i<<":";
+	intermediaRepresentStream << "L" << i << ":";
 }
-void Node::emit(std::string str) {
+
+void Node::emit(std::string str) 
+{
 	std::cout<<"\t"<<str<<std::endl;
+	intermediaRepresentStream << "\t" << str << std::endl;
 }

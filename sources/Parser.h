@@ -45,6 +45,5 @@ private:
 	Token* look;
 	Env* top;
 	int used;
-
 };
 

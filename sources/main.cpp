@@ -1,6 +1,7 @@
 
 #include "Lexer.h"
 #include "Parser.h"
+#include <fstream>
 
 struct MyStruct
 {
@@ -23,11 +24,19 @@ void testPointer(MyStruct *father)
 	delete son;
 }
 
+std::ofstream intermediaRepresentStream;
+
 int main() 
 {
 	//MyStruct ms;
 	//testPointer(&ms);
 
+	intermediaRepresentStream.open("sample.ir", std::ios::out);
+	if (!intermediaRepresentStream.is_open())
+	{
+		std::cout << "Fail to Open File for Output IR" << std::endl;
+		exit(1);
+	}
 
 	Lexer *lex = new Lexer("sample.dc");
 	Parser parser(lex);

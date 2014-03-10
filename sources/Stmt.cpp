@@ -23,10 +23,7 @@ void Stmt::gen(int b, int a)
 
 If::If(Expr* e, Stmt* s):test(e), stmt(s) 
 {
-	//test = new Expr(*e);
-	//stmt = new Stmt(*s);
-
-	if (test->type == DataType::TypeBOOL)
+	if (*test->type == *DataType::TypeBOOL)
 	{
 	} else {
 		test->error("Require BOOL in If Stmt");
@@ -47,11 +44,7 @@ void If::gen(int b, int a) {
 
 Else::Else(Expr* e, Stmt* s1, Stmt* s2) :test(e), stmt1(s1), stmt2(s2)
 {
-	//test = new Expr(*e);
-	//stmt1 = new Stmt(*s1);
-	//stmt2 = new Stmt(*s2);
-
-	if (test->type == DataType::TypeBOOL)
+	if (*test->type == *DataType::TypeBOOL)
 	{
 		
 	} else {
@@ -89,7 +82,7 @@ void While::init(Expr* e, Stmt* s)
 {
 	test = e;
 	stmt = s;
-	if (test->type == DataType::TypeBOOL)
+	if (*test->type == *DataType::TypeBOOL)
 	{
 
 	} else {
@@ -123,7 +116,7 @@ void Do::init(Expr* e, Stmt* s)
 {
 	test = e;
 	stmt = s;
-	if (test->type == DataType::TypeBOOL)
+	if (*test->type == *DataType::TypeBOOL)
 	{
 
 	} else {
@@ -146,7 +139,6 @@ void Do::gen(int b, int a) {
 
 Set::Set(Id* i, Expr* e):id(i), exp(e) 
 {
-	//exp = new Expr(*e);
 	if (*check(id->type, exp->type) == *DataType::TypeNULL)
 	{
 		error("Type Error");
@@ -165,10 +157,6 @@ void Set::gen(int b, int a)
 
 SetElem::SetElem(Access* x, Expr* e): array(x->array), index(x->index), exp(e) 
 {
-	/*
-	index = new Expr(*(x->index));
-	exp = new Expr(*e);
-	*/
 	if (*check(x->type, exp->type) == *DataType::TypeNULL)
 	{
 		error("Type Error");
@@ -195,9 +183,12 @@ Break::Break()
 	}
 	stmt = Enclosing;
 }
+
 Break::~Break()
 {
+
 }
+
 void Break::gen(int b, int a) 
 {
 	std::stringstream gt;
@@ -207,6 +198,7 @@ void Break::gen(int b, int a)
 
 Seq::Seq(Stmt* s1, Stmt* s2) :stmt1(s1), stmt2(s2)
 {
+
 }
 
 Seq::~Seq()
@@ -215,10 +207,10 @@ Seq::~Seq()
 }
 
 void Seq::gen(int b, int a) {
-	if (stmt1 == Stmt::StmtNULL)
+	if (*stmt1 == *Stmt::StmtNULL)
 	{
 		stmt2->gen(b, a);
-	} else if (stmt2 == Stmt::StmtNULL)
+	} else if (*stmt2 == *Stmt::StmtNULL)
 	{
 		stmt1->gen(b, a);
 	} else {

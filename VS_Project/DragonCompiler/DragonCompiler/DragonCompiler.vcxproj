@@ -81,6 +81,7 @@
     <ClInclude Include="..\..\..\sources\DataType.h" />
     <ClInclude Include="..\..\..\sources\Env.h" />
     <ClInclude Include="..\..\..\sources\Expr.h" />
+    <ClInclude Include="..\..\..\sources\ExternGlobal.h" />
     <ClInclude Include="..\..\..\sources\Lexer.h" />
     <ClInclude Include="..\..\..\sources\Logical.h" />
     <ClInclude Include="..\..\..\sources\Node.h" />
