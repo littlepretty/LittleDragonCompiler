@@ -1,3 +1,65 @@
+
+
+/*** Begin Environment ***/
+
+Word: a
+Basic Type: []
+Offset: 12
+
+
+Word: i
+Basic Type: int
+Offset: 0
+
+
+Word: j
+Basic Type: int
+Offset: 4
+
+
+Word: v
+Basic Type: float
+Offset: 8
+
+
+Word: x
+Basic Type: float
+Offset: 412
+
+
+/*** End Environment ***/
+
+
+
+/*** Begin Environment ***/
+
+Word: a
+Basic Type: []
+Offset: 12
+
+
+Word: i
+Basic Type: int
+Offset: 0
+
+
+Word: j
+Basic Type: int
+Offset: 4
+
+
+Word: v
+Basic Type: float
+Offset: 8
+
+
+Word: x
+Basic Type: float
+Offset: 412
+
+
+/*** End Environment ***/
+
 L1:L4:	i = i + 1
 L6:	t1 = i * 4
 	t2 = a [ t1 ] 

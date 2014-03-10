@@ -1,5 +1,5 @@
 #include "Parser.h"
-
+#include "ExternGlobal.h"
 
 Parser::Parser(Lexer* l): p_lex(l), used(0), look(NULL), top(NULL)
 {
@@ -36,13 +36,13 @@ void Parser::program()
 {
 	Stmt* s = block();
 
+
+
 	int begin = s->newLabel();
 	int after = s->newLabel();
 	s->emitLabel(begin);
 	s->gen(begin,after);
 	s->emitLabel(after);
-
-	std::cout << top;
 }
 
 Stmt* Parser::block()
@@ -53,6 +53,10 @@ Stmt* Parser::block()
 	decls();
 	Stmt* s = stmts();
 	match('}');
+
+	std::cout << *top;
+	intermediaRepresentStream << *top;
+
 	top = savedEnv;
 
 	return s;
