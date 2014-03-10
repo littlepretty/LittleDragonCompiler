@@ -1,0 +1,16 @@
+L1:L4:	i = i + 1
+L6:	if [] < v goto L4
+L5:	j = j - 1
+L8:	if [] > v goto L5
+L7:	iffalse i >= j goto L9
+L10:	goto L0
+L9:	t1 = i * 4
+	x = a [ t1 ] 
+L11:	t2 = i * 4
+	t3 = j * 4
+	t4 = a [ t3 ] 
+	a [ t2 ] = t4
+L12:	t5 = j * 4
+	a [ t5 ] = x
+L13:	goto L1
+L3:L2:

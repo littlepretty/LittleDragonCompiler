@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{A9A239FB-D4F6-45A5-BA8C-8AB2CECBA719}</ProjectGuid>
+    <RootNamespace>LittleDragonCompiler</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\sources\DataType.cpp" />
+    <ClCompile Include="..\..\..\sources\Env.cpp" />
+    <ClCompile Include="..\..\..\sources\Expr.cpp" />
+    <ClCompile Include="..\..\..\sources\Lexer.cpp" />
+    <ClCompile Include="..\..\..\sources\Logical.cpp" />
+    <ClCompile Include="..\..\..\sources\main.cpp" />
+    <ClCompile Include="..\..\..\sources\Node.cpp" />
+    <ClCompile Include="..\..\..\sources\Op.cpp" />
+    <ClCompile Include="..\..\..\sources\Parser.cpp" />
+    <ClCompile Include="..\..\..\sources\Stmt.cpp" />
+    <ClCompile Include="..\..\..\sources\Token.cpp" />
+    <ClCompile Include="..\..\..\sources\Word.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\sources\DataType.h" />
+    <ClInclude Include="..\..\..\sources\Env.h" />
+    <ClInclude Include="..\..\..\sources\Expr.h" />
+    <ClInclude Include="..\..\..\sources\ExternGlobal.h" />
+    <ClInclude Include="..\..\..\sources\Lexer.h" />
+    <ClInclude Include="..\..\..\sources\Logical.h" />
+    <ClInclude Include="..\..\..\sources\Node.h" />
+    <ClInclude Include="..\..\..\sources\Op.h" />
+    <ClInclude Include="..\..\..\sources\Parser.h" />
+    <ClInclude Include="..\..\..\sources\Stmt.h" />
+    <ClInclude Include="..\..\..\sources\Token.h" />
+    <ClInclude Include="..\..\..\sources\Word.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\..\sources\Holmes" />
+    <None Include="..\..\..\sources\Makefile" />
+    <None Include="..\..\..\sources\sample.dc" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
