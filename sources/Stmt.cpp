@@ -129,7 +129,8 @@ Do::~Do()
 
 }
 
-void Do::gen(int b, int a) {
+void Do::gen(int b, int a) 
+{
 	after = a;
 	int label = newLabel();
 	stmt->gen(b,label);
@@ -177,7 +178,7 @@ void SetElem::gen(int b, int a)
 
 Break::Break() 
 {
-	if (Stmt::StmtNULL == Stmt::Enclosing)
+	if (*Stmt::StmtNULL == *Stmt::Enclosing)
 	{
 		error("Unenclosed Break");
 	}
@@ -192,7 +193,7 @@ Break::~Break()
 void Break::gen(int b, int a) 
 {
 	std::stringstream gt;
-	gt<<"goto L"<<after;
+	gt<<"goto L"<<stmt->after;
 	emit(gt.str());
 }
 
