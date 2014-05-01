@@ -12,7 +12,7 @@ public:
 	virtual ~Env(void);
 
 	void put(Word w, Id i);
-	Id get(Word w);
+	Id get(const Word* w);
 	friend std::ostream& operator<<(std::ostream& os, const Env& env);
 private:
 	Env *prev;

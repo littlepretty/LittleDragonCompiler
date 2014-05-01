@@ -1,7 +1,7 @@
 #include "Parser.h"
 #include "ExternGlobal.h"
 
-Parser::Parser(Lexer* l): p_lex(l), used(0), look(NULL), top(NULL)
+Parser::Parser(Lexer* l): p_lex(l), look(NULL), top(NULL), used(0)
 {
 	move();
 }
@@ -189,10 +189,11 @@ Stmt* Parser::assign()
 {
 	Stmt* s = NULL;
 	Word* w = (Word*)look;
-	Id* id = &top->get(*w);
+	Id* id = new Id(top->get(w));
+
 	if (*id == *Id::IdNULL)
 	{
-		error(w->toString()+" Undeclared");
+		error(((Word *)look)->toString()+" Undeclared");
 	}
 	match(ID);
 	if (look->t_tag == '=')
@@ -219,8 +220,8 @@ Expr* Parser::boolExpr()
 		Token* tok = look;
 		move();
 		Expr *rhs = join();
-		Or* or = new Or(tok, x, rhs);
-		x = or;
+		Or* orExpr = new Or(tok, x, rhs);
+		x = orExpr;
 	}
 	return x;
 }
@@ -233,8 +234,8 @@ Expr* Parser::join()
 		Token* tok = look;
 		move();
 		Expr *rhs = equality();
-		And *and = new And(tok, x, rhs);
-		x = and;
+		And *andExpr = new And(tok, x, rhs);
+		x = andExpr;
 	}
 	return x;
 }
@@ -343,7 +344,7 @@ Expr* Parser::factor()
 	{
 		std::string s = look->toString();
 		Word *w = (Word*)look;
-		Id* id = &top->get(*w);
+		Id* id = new Id(top->get(w));
 		if (id == Id::IdNULL)
 		{
 			error(look->toString() + "Undeclared");

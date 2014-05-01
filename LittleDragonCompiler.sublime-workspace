@@ -1,0 +1,719 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"IN",
+				"INCLUDES"
+			],
+			[
+				"t",
+				"tp	template <typename ${1:_InputIter}>"
+			],
+			[
+				"var",
+				"var-declaration"
+			],
+			[
+				"para",
+				"param-list"
+			],
+			[
+				"add",
+				"additive-expression"
+			],
+			[
+				"arg",
+				"arg-list"
+			],
+			[
+				"st",
+				"statement-list"
+			],
+			[
+				"par",
+				"param"
+			],
+			[
+				"param",
+				"params-list"
+			],
+			[
+				"de",
+				"declaration"
+			],
+			[
+				"MA",
+				"MACHINE_DIR"
+			],
+			[
+				"compil",
+				"COMPILER_OBJECT"
+			],
+			[
+				"C",
+				"COMPILER_HEADER"
+			],
+			[
+				"COMPILER_",
+				"COMPILER_OBJECT"
+			],
+			[
+				"Ti",
+				"TINY_COMPILER_DIR"
+			],
+			[
+				"T",
+				"TINY_MACHINE_DIR"
+			],
+			[
+				"date",
+				"datetime"
+			],
+			[
+				"raw",
+				"rawData"
+			],
+			[
+				"sour",
+				"sourceAddr"
+			],
+			[
+				"des",
+				"destinationAddr"
+			],
+			[
+				"size",
+				"sizeCapturedData"
+			],
+			[
+				"byt",
+				"byteArrayToInt"
+			],
+			[
+				"by",
+				"byte"
+			],
+			[
+				"byte",
+				"bytearray"
+			],
+			[
+				"str",
+				"StrToNum"
+			],
+			[
+				"sin",
+				"signed"
+			],
+			[
+				"def",
+				"define"
+			],
+			[
+				"G",
+				"GLOBAL_VALID"
+			],
+			[
+				"char",
+				"charFilter"
+			],
+			[
+				"five",
+				"fiveStarSameColor"
+			],
+			[
+				"num",
+				"NUM_COLS"
+			],
+			[
+				"dir",
+				"dir_y"
+			],
+			[
+				"col",
+				"color"
+			],
+			[
+				"nu",
+				"NUM_ROWS"
+			],
+			[
+				"for",
+				"for	For Loop"
+			],
+			[
+				"fo",
+				"for	For Loop"
+			],
+			[
+				"be",
+				"begin"
+			],
+			[
+				"iter",
+				"iterator"
+			],
+			[
+				"order",
+				"orderMap"
+			],
+			[
+				"co",
+				"compare"
+			],
+			[
+				"ord",
+				"orderMap"
+			],
+			[
+				"inde",
+				"index_b"
+			],
+			[
+				"ind",
+				"index_b"
+			],
+			[
+				"leng",
+				"length_b"
+			],
+			[
+				"l",
+				"length_a"
+			],
+			[
+				"mak",
+				"makeChanges"
+			],
+			[
+				"re",
+				"result_2"
+			],
+			[
+				"resu",
+				"result_1"
+			],
+			[
+				"mat",
+				"matchInMazeCore"
+			],
+			[
+				"n",
+				"num_rows"
+			],
+			[
+				"res",
+				"result_4"
+			],
+			[
+				"fi",
+				"find"
+			],
+			[
+				"fin",
+				"binaryFind"
+			],
+			[
+				"up",
+				"up-low"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "sources/makefile",
+			"settings":
+			{
+				"buffer_size": 797,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/Parser.cpp",
+			"settings":
+			{
+				"buffer_size": 6433,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/Stmt.cpp",
+			"settings":
+			{
+				"buffer_size": 2990,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "sources/Env.cpp",
+			"settings":
+			{
+				"buffer_size": 762,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"",
+				"Package Control: Install Package"
+			],
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: Add Repository"
+			],
+			[
+				"Snippet: ",
+				"Snippet: #!/usr/bin/env"
+			]
+		],
+		"width": 449.0
+	},
+	"console":
+	{
+		"height": 385.0,
+		"history":
+		[
+			"8+2",
+			"clear()",
+			"help",
+			"clear",
+			"print(\"aasdf\")",
+			"pwd()",
+			"pwd",
+			"ctags -R -f .tags",
+			"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/Users/YJQ/Documents/XcodeDocuments/LittleDragonCompiler/sources/Env.h",
+		"/Users/YJQ/Documents/XcodeDocuments/LittleDragonCompiler/sources/Parser.h",
+		"/Users/YJQ/Documents/XcodeDocuments/LittleDragonCompiler/sources/Expr.h",
+		"/Users/YJQ/Documents/XcodeDocuments/LittleDragonCompiler/sources/Makefile",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/Makefile",
+		"/Volumes/Civilization V年度版/注意事项.txt",
+		"/Volumes/Civilization V年度版/安装说明.txt",
+		"/Users/YJQ/Documents/BNUGraduateThesis/graduate_materials/论文纯文字.txt",
+		"/Users/YJQ/Downloads/ez_setup.py",
+		"/Users/YJQ/Downloads/install.sh",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/S3F_FULL/full/openvzemu_include/linux/netfilter/xt_connmark.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/S3F_FULL/full/build.sh",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/S3F_FULL/full/s3fnet/makefile.common",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/S3F_FULL/full/s3fnet/makefile",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/S3F_FULL/full/s3f.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/s3fnet/test/dummy_2nodes_1timelines/test.dml",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/aux/fast_tree_barrier.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/aux/fast_barrier.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/aux/barrier_mutex.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/app/phold_node.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/api/message.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/api/outchannel.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/api/process.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/api/timeline.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/api/interface.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/api/inchannel.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/api/event.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/aux/barrier.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/aux/barrier.cc",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/build.sh",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/openflowlib/switch/dp_act.c.orig",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/openflowlib/switch/dp_act.c",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/dml/acinclude.m4",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/dml/AUTHORS",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/s3fnet/src/os/base/protocol_session.cc",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/s3f.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/dml/dml.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/doc/doxygen/doxyconf",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/s3f-full/api/makefile",
+		"/Users/YJQ/Desktop/full/build.sh",
+		"/Users/YJQ/Desktop/Presentation.cpp",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/ReadHPSTL/MyNoteIterator.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/ReadHPSTL/MyNoteMemory.h",
+		"/Users/YJQ/Downloads/openjdk/hotspot/src/os/linux/vm/jvm_linux.cpp",
+		"/Users/YJQ/Downloads/openjdk/hotspot/src/os/linux/vm/jvm_linux.h",
+		"/Users/YJQ/Downloads/openjdk/hotspot/README",
+		"/Users/YJQ/Documents/XcodeDocuments/GitHubDemos/c-minus/Util.c",
+		"/Users/YJQ/Documents/XcodeDocuments/GitHubDemos/c-minus/Globals.h",
+		"/Users/YJQ/Documents/XcodeDocuments/GitHubDemos/c-minus/Parse.c",
+		"/Users/YJQ/Documents/XcodeDocuments/CMinusCompiler/CMinusCompiler/CMinusCompiler/CMinusEBNF",
+		"/Users/YJQ/Documents/XcodeDocuments/CMinusCompiler/CMinusCompiler/CMinusCompiler/FollowSet",
+		"/Users/YJQ/Documents/XcodeDocuments/CMinusCompiler/CMinusCompiler/CMinusCompiler/FirstSet",
+		"/Users/YJQ/Documents/XcodeDocuments/CMinusCompiler/CMinusCompiler/CMinusCompiler/sort.cm",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/parse.c",
+		"/Users/YJQ/Library/Application Support/Sublime Text 3/Packages/Default/Preferences.sublime-settings",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/util.c",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/main.c",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/scan.c",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/globals.h",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/boost/boost_1_55_0/boost/smart_ptr/shared_ptr.hpp",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/boost/boost_1_55_0/boost/shared_ptr.hpp",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/boost/boost_1_55_0/boost/asio/detail/shared_ptr.hpp",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/sample.tm",
+		"/Users/YJQ/Softwares/ProfileOpenSourceCode/Cpp/LevelDB/leveldb/db/db_impl.h",
+		"/Users/YJQ/Downloads/pcre-8.34/pcrecpp.cc",
+		"/Users/YJQ/Documents/XcodeDocuments/GitHubDemos/folly/folly/String.cpp",
+		"/Users/YJQ/Downloads/pcre-8.34/README",
+		"/Users/YJQ/Softwares/HP-STL/vector",
+		"/Users/YJQ/Softwares/boost_1_55_0/binary_libs/include/boost/fusion/container/vector/vector.hpp",
+		"/Users/YJQ/Downloads/mame64bit/docs/config.txt",
+		"/Users/YJQ/Documents/XcodeDocuments/XcodeColors/README.markdown",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/tiny.l",
+		"/Users/YJQ/Documents/XcodeDocuments/TinyCompiler/TinyCompiler/TinyCompiler/TinyCompiler/LexYacc/tiny.l",
+		"/Users/YJQ/Desktop/go-pear.phar",
+		"/Users/YJQ/Desktop/hosts",
+		"/Users/YJQ/Library/Developer/Xcode/DerivedData/TinyCompiler-goemriycftlvsteodfdcmivzpjty/Build/Products/Debug/scan_sample.tny",
+		"/Users/YJQ/Softwares/boost_1_55_0/libs/graph/example/graph.cpp",
+		"/Users/YJQ/Softwares/boost_1_55_0/libs/graph/example/quick_tour.cpp",
+		"/Users/YJQ/Softwares/boost_1_55_0/libs/graph/example/prim-telephone.cpp",
+		"/usr/local/texlive/2013/texmf-var/fonts/map/pdftex/updmap/pdftex_dl14.map",
+		"/Users/YJQ/Downloads/README",
+		"/Users/YJQ/Desktop/AllEPUBInOReilly.txt",
+		"/Users/YJQ/Desktop/RunScriptForStaticLibrary.sh",
+		"/Users/YJQ/Documents/linux-3.11.4/linux.sublime-workspace",
+		"/Users/YJQ/Desktop/Remainder.hpp",
+		"/Users/YJQ/Desktop/TestBoostInstall/MonteCarlo.txt",
+		"/Users/YJQ/Softwares/boost_1_55_0/binary_libs/include/boost/math/concepts/distributions.hpp",
+		"/Users/YJQ/Softwares/boost_1_55_0/binary_libs/include/boost/graph/parallel/distribution.hpp",
+		"/Users/YJQ/Library/Developer/Shared/Documentation/DocSets/Library/Receipts/com.apple.pkg.1.0.LegacyDocset.bom",
+		"/Users/YJQ/Softwares/boost_1_55_0/libs/graph/example/dijkstra-example.cpp",
+		"/Users/YJQ/Softwares/boost_1_55_0/libs/graph/example/city_visitor.cpp",
+		"/Users/YJQ/Copy/Documents/GraduateThesis/bnuthesis_1.51/ref/refs.bib",
+		"/Users/YJQ/Desktop/Example_PHP.php",
+		"/Users/YJQ/Desktop/time_table.phptime_",
+		"/Users/YJQ/Desktop/Examples_Perl.pl",
+		"/Users/YJQ/Downloads/御姐很哀伤 ed2k 10高清视频 长沙美女模特视频[新]/20131217/17.bat",
+		"/Users/YJQ/Desktop/闫登元年度总结2013.txt",
+		"/Users/YJQ/Documents/XcodeDocuments/GitHubDemos/FlickrKit/README.md",
+		"/Users/YJQ/Library/Application Support/Sublime Text 3/Packages/User/Package Control.sublime-settings",
+		"/Users/YJQ/llvm/examples/Kaleidoscope/Chapter4/toy.cpp",
+		"/Users/YJQ/llvm/examples/Kaleidoscope/Chapter3/toy.cpp",
+		"/Users/YJQ/llvm/examples/Kaleidoscope/Chapter2/toy.cpp",
+		"/Users/YJQ/llvm/examples/Kaleidoscope/Chapter7/toy.cpp",
+		"/Users/YJQ/Downloads/peekPcapFile.py",
+		"/Users/YJQ/Documents/Programming Languages/Python/peekPcapFile.py",
+		"/# !:bin:python",
+		"/Users/YJQ/Downloads/Unknow.dat",
+		"/Users/YJQ/Copy/Source Code Backup/InterviewProblems/MyStrToNum.cpp",
+		"/Users/YJQ/Copy/Source Code Backup/InterviewProblems/cppTypeSize.cpp",
+		"/Users/YJQ/Copy/Source Code Backup/InterviewProblems/repeatCharFilter.cpp",
+		"/Users/YJQ/Copy/Source Code Backup/InterviewProblems/FiveStarSameColor.cpp",
+		"/Users/YJQ/Copy/Source Code Backup/InterviewProblems/sortStringBySet.cpp",
+		"/Users/YJQ/Copy/Source Code Backup/InterviewProblems/mergeArraysToArray.cpp",
+		"/F/Copy/Source Code Backup/InterviewProblems/matchParen.cpp",
+		"/E/YJQ/VS2010 Workspace/SortStringsBySet/SortStringsBySet/AbsoluteDirName.cpp",
+		"/F/Copy/Source Code Backup/InterviewProblems/MyQuickSort.cpp",
+		"/F/Copy/Source Code Backup/InterviewProblems/makeChanges.cpp",
+		"/F/Copy/Source Code Backup/InterviewProblems/matchInMaze.cpp",
+		"/F/Copy/Source Code Backup/InterviewProblems/findInOrder.cpp",
+		"/Users/YJQ/Desktop/FounderProblems/parenthese.cpp",
+		"/Users/YJQ/Desktop/FounderProblems/eightQueen.cpp",
+		"/Users/YJQ/Desktop/FounderProblems/ProblemTwo.cpp",
+		"/Users/YJQ/Desktop/FounderProblems/ProblemOne.cpp",
+		"/Users/YJQ/Desktop/findInOrder.cpp",
+		"/Users/YJQ/Documents/XcodeDocuments/GitHubDemos/wavs2onewav/Release/makefile",
+		"/Users/YJQ/Documents/XcodeDocuments/ViewAcdemicLinuxCode/mcpat0.8_r274/McPAT08release/core.cc",
+		"/Users/YJQ/Documents/XcodeDocuments/ViewAcdemicLinuxCode/mcpat0.8_r274/McPAT08release/McPAT.sublime-project",
+		"/Users/YJQ/Library/Application Support/Sublime Text 3/Packages/CTags/CTags.sublime-settings"
+	],
+	"find":
+	{
+		"height": 26.0
+	},
+	"find_in_files":
+	{
+		"height": 99.0,
+		"where_history":
+		[
+			"<open files>"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"S3F_INCLUDE",
+			"S3F_INCLUDES",
+			"CXX",
+			"cxx",
+			"5.4",
+			"5.2",
+			"4.3",
+			"4.2.3",
+			"4.2.2",
+			"4.2",
+			"2.6",
+			"[1-9]\\.[1-9]",
+			"[1-9].[1-9]",
+			"(\\r|\\n)+",
+			"DUMMY_CTRL_COMMAND1",
+			"ENABLE_OPENVZ_EMULATION",
+			"ident_st",
+			"id",
+			"allocNewNode",
+			"args",
+			"var_declaration",
+			"CFLAGS",
+			"-c",
+			"rom",
+			"uni",
+			"unihei",
+			"hei",
+			"parallel",
+			"pdf",
+			"quantile",
+			"Value"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"\\n[1-9]\\.[1-9]",
+			"",
+			"$(CFLAGS)",
+			"CFLAGS"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 2,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "sources/makefile",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 797,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								724,
+								724
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Makefile/Makefile.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 373.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "sources/Parser.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 6433,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5559,
+								5559
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 5785.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "sources/Stmt.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 2990,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								281,
+								281
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3404.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "sources/Env.cpp",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 762,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								259,
+								259
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 26.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 31.0
+	},
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"project": "LittleDragonCompiler.sublime-project",
+	"replace":
+	{
+		"height": 48.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+			[
+				"barr",
+				"aux/barrier.h"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 392.0,
+		"selected_items":
+		[
+			[
+				"Activation",
+				"ProtocolCallbackActivation"
+			]
+		],
+		"width": 440.0
+	},
+	"settings":
+	{
+	},
+	"show_minimap": false,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 153.0,
+	"status_bar_visible": false,
+	"template_settings":
+	{
+	}
+}

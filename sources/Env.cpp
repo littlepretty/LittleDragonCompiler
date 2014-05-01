@@ -15,11 +15,11 @@ void Env::put(Word w, Id i)
 	table[w] = i;
 }
 
-Id Env::get(Word w)
+Id Env::get(const Word* w)
 {
 	for (Env* e = this; e != NULL; e = e->prev)
 	{
-		std::map<Word,Id>::iterator found = e->table.find(w);
+		std::map<Word,Id>::iterator found = e->table.find(*w);
 		if (found != e->table.end())
 		{
 			return found->second;

@@ -46,5 +46,5 @@ class Rel: public Logical
 public:
 	Rel(Token* tok, Expr* e1, Expr* e2);
 	~Rel();
-	virtual void Rel::jumping(int t, int f);
+	virtual void jumping(int t, int f);
 };
